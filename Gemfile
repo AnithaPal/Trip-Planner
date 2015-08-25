@@ -38,3 +38,7 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass'
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
