@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  
+  resources :trips
+
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   get 'about' => 'welcome#about'
   root to: 'welcome#index'
