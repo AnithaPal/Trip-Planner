@@ -1,9 +1,22 @@
+
+
 <%= form_for @trip do |f| %>
-  <div class="form-group">
+<% if @trip.errors.any? %>
+  <div class="alert alert-danger">
+    <h4> There is <%= pluralize(@trip.errors.count, "error") %>.</h4>
+    <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+  <%= form_group_tag(@trip.errors[:name]) do %>
     <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', placeholder: 'Enter trip' %>
-  </div>
-  <div class="form-group">
+    <%= f.text_field :name, class: 'form-control', placeholder: "Enter a trip" %>
+  <% end %>
+  <div class="form-group text-center">
+    <br>
+    
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
 <% end %>
