@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
   
-  resources :trips
+  get 'polls/show'
+
+  get 'polls/edit'
+
+  get 'polls/new'
+
+  resources :trips do
+    resources :polls, except: [:index]
+  end
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   get 'about' => 'welcome#about'

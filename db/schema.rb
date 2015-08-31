@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827153615) do
+ActiveRecord::Schema.define(version: 20150831033202) do
+
+  create_table "poll_options", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "poll_options", ["poll_id"], name: "index_poll_options_on_poll_id"
+
+  create_table "polls", force: :cascade do |t|
+    t.text     "topic"
+    t.integer  "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "polls", ["trip_id"], name: "index_polls_on_trip_id"
 
   create_table "trips", force: :cascade do |t|
     t.string   "name"
