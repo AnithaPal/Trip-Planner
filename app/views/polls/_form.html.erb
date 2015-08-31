@@ -14,6 +14,19 @@
       <%= f.text_field :topic, class: 'form-control', placeholder: "Enter a poll" %>
     </div>
   <% end %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Options</div>
+    <div class="panel-body">
+      <%= f.fields_for :poll_options do |options_form| %>
+        <%= render 'poll_option_fields', f: options_form %>
+      <% end %>
+
+      <div class="links">
+        <%= link_to_add_association 'add option', f, :poll_options %>
+      </div>
+    </div>
+  </div>
+
   <div class="form-group text-center">
     <br>
     <%= f.submit "Create", class: 'btn btn-success' %>
