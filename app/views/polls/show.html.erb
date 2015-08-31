@@ -5,25 +5,37 @@
     <% end %>
   </div>
   <br />
-  <div class="row col-md-8">
-    <h2><%= @poll.topic %> 
-      <small>
-        <%= link_to edit_trip_poll_path(@trip, @poll), class: 'btn btn-default btn-sm'  do %>
-          <i class="glyphicon glyphicon-pencil"> </i>&nbsp; 
-        <% end %>
-        <%= link_to  trip_poll_path(@trip, @poll),method: :delete, class: 'btn btn-danger btn-sm', data: {confirm: 'Are you sure?'} do %>
-          <i class="glyphicon glyphicon-trash"> </i>&nbsp;
-        <% end %> 
-      </small>
-    </h2>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ul class="list-group">
-        <% @poll.poll_options.each do |option| %> 
-          <li class="list-group-item"> <%= option.title %>  </li>
-        <% end %> 
-      </ul>
+  <div class="row ">
+    <div class="col-md-8">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h2><%= @poll.topic %> 
+            <small>
+              <%= link_to edit_trip_poll_path(@trip, @poll), class: 'btn btn-default btn-xs'  do %>
+                <i class="glyphicon glyphicon-pencil"> </i>&nbsp; 
+              <% end %>
+              <%= link_to  trip_poll_path(@trip, @poll),method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} do %>
+                <i class="glyphicon glyphicon-trash"> </i>&nbsp;
+              <% end %> 
+            </small>
+          </h2>
+        </div>
+        <div class="panel-body">
+          <table>
+            <% @poll.poll_options.each do |option| %> 
+              <tbody>
+                <tr>
+                  <td width = "50"> <%= radio_button_tag :option_id, option.id %> </td>
+                  <td width = "110"> <%= option.title %>  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table> <br/>
+          <%= submit_tag "Confirm selection", class: "btn btn-success" %>
+       </div>
+       <%= render 'voting_form' %>
+      </div>
     </div>
-  </div>
+    <div class="col-md-2">
+    </div>
 </div>
