@@ -1,5 +1,11 @@
 <div class="container">
-    <h1 class="text-center"> <%= @trip.name %> <br/>
+  <div class= "row col-md-2 pull-left">
+    <%= link_to trips_path, class: 'btn btn-primary' do  %>
+      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp; 
+    <% end %>
+  </div>
+  <br />
+  <h1 class="text-center"> <%= @trip.name %> <br/>
       <small>
         <%= link_to edit_trip_path , class: 'btn btn-default btn-xs'  do %>
           <i class="glyphicon glyphicon-pencil"> </i>&nbsp; 

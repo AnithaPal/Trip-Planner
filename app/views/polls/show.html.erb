@@ -1,4 +1,10 @@
 <div class="container">
+  <div class= "row col-md-2 pull-left">
+    <%= link_to trip_path(@trip), class: 'btn btn-primary' do  %>
+      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp; 
+    <% end %>
+  </div>
+  <br />
   <div class="row col-md-8">
     <h2><%= @poll.topic %> 
       <small>
@@ -10,5 +16,14 @@
         <% end %> 
       </small>
     </h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <% @poll.poll_options.each do |option| %> 
+          <li class="list-group-item"> <%= option.title %>  </li>
+        <% end %> 
+      </ul>
+    </div>
   </div>
 </div>
