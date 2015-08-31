@@ -1,4 +1,5 @@
 class PollsController < ApplicationController
+
   def show
     @trip = Trip.find(params[:trip_id])
     @poll = @trip.polls.find(params[:id])
@@ -16,10 +17,10 @@ class PollsController < ApplicationController
 
     if @poll.save
       flash[:notice] = "Poll was created successfully"
-      redirect_to [@trip, @poll]
+      redirect_to trip_path(@trip)
     else
-      flash[:error] = "Sorry, there was an error creating your poll. Please try again."
-      render "new"
+      flash[:error] = "Sorry, There was an error creating a poll. Please try again"
+      render :new
     end
   end
 
@@ -47,7 +48,7 @@ class PollsController < ApplicationController
 
     if @poll.destroy
       flash[:notice] = "Poll was deleted successfully"
-      redirect_to trip_polls_path(@trip)
+      redirect_to trip_path(@trip)
     else
       flash[:error] = "Sorry, there was an error deleting your poll. Please try again."
       render "show"
@@ -58,7 +59,7 @@ class PollsController < ApplicationController
 private
 
 def poll_params
-  params.require(:poll).permit.permit(:topic)
+  params.require(:poll).permit(:topic)
 end
 
 end

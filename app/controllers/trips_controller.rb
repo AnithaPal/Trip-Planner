@@ -34,7 +34,7 @@ class TripsController < ApplicationController
 
     if @trip.update_attributes(trip_params)
       flash[:notice] = "Trip was updated successfully"
-      redirect_to @trip
+      redirect_to trips_path
     else
       flash[:error] = "Sorry, There was some an error when updating your trip. Please try again."
       render :edit

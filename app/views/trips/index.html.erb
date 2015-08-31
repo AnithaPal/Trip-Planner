@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <h1 class="text-center">All Trips</h1>
+      <h4 class="text-center"> <%= link_to "Add trip", new_trip_path %> </h4>
       <% @trips.each do |trip| %>
       <div class="media">
         <div class="media-body">
