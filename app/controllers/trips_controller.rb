@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    @trips = policy_scope(Trip)
     authorize @trips
   end
 

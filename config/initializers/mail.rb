@@ -14,7 +14,7 @@ ActionMailer::Base.raise_delivery_errors = true
 
 class DevelopmentMailInterceptor
   def self.delivering_email(message)
-    message.to =  'youremail@website.com'
+    message.to = "codetrain15@gmail.com"
     message.cc = nil
     message.bcc = nil
   end

@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
   has_many :trips
   has_many :votes, dependent: :destroy
   has_many :poll_options, through: :votes
@@ -28,19 +27,21 @@ class User < ActiveRecord::Base
     end
   end
 
-# def voted_for?(poll)
-#   poll_options.any? {|v| v.poll == poll }
-# end
+  def owner?
+    role == 'owner'
+  end
 
-def owner?
-  role == 'owner'
-end
+  def guest?
+    role == 'guest'
+  end
 
-def guest?
-  role == 'guest'
-end
+  # def voted_for?(poll)
+  #   votes.any? {|v| v.poll_option.poll == poll}
+  # end
 
-def voted_for?(poll)
-  votes.any? {|v| v.poll_option.poll == poll}
-end
+  def voted_for?(poll)
+    # user > votes < po < poll
+    poll_options.includes(:poll).where(poll: poll).present?
+  end
+  
 end
