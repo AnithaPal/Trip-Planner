@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
   
+  get 'users/show'
+
   resources :trips do
     resources :polls, except: [:index]
   end
   resources :votes, only: [:create]
+  resources :users, only: [:show]
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   get 'about' => 'welcome#about'

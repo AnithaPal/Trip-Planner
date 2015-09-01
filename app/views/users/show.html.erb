@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="media text-center">
+        <div class="media-body">
+          <h2 class="media-heading text-center"> <%= @user.name %> </h2>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <h3>Participation in polls</h3>
+  <% @user.poll_options.each do |option| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %></div>
+        <div class="panel-body">
+          <%= option.title %>
+        </div>
+      </div>
+  <% end %>
+</div>
