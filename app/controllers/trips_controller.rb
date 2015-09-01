@@ -1,20 +1,24 @@
 class TripsController < ApplicationController
   def index
     @trips = Trip.all
+    authorize @trips
   end
 
   def show
     @trip = Trip.find(params[:id])
+    authorize @trip
   end
 
   def new
     @trip = Trip.new
     @trip.user = current_user
+    authorize @trip
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+    authorize @trip
 
     if @trip.save
       flash[:notice] = "Trip was created successfully"
@@ -31,6 +35,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+    authorize @trip
 
     if @trip.update_attributes(trip_params)
       flash[:notice] = "Trip was updated successfully"
@@ -43,6 +48,8 @@ class TripsController < ApplicationController
 
   def destroy
     @trip = Trip.find(params[:id])
+    authorize @trip
+    
     if @trip.destroy
       flash[:notice] = "Trip was successfully deleted"
       redirect_to trips_path

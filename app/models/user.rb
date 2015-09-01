@@ -32,6 +32,14 @@ class User < ActiveRecord::Base
 #   poll_options.any? {|v| v.poll == poll }
 # end
 
+def owner?
+  role == 'owner'
+end
+
+def guest?
+  role == 'guest'
+end
+
 def voted_for?(poll)
   votes.any? {|v| v.poll_option.poll == poll}
 end
