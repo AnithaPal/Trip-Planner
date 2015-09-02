@@ -1,0 +1,6 @@
+<h1> Add Trippers </h1>
+<%=  form_for :trippers, url: trippers_path do |f| %>
+  <%= f.hidden_field :trip_id, :value => params[:trip_id] %>
+  <%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'name') %>
+  <%= f.submit "Save" %>
+<% end %>

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
 
+  
+
   resources :trips do
     resources :polls, except: [:index]
   end
   resources :votes, only: [:create]
+  resources :trippers, only: [:create, :new, :destroy] 
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', 
                                     registrations: "devise/registrations" }
