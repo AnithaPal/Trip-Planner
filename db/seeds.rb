@@ -1,11 +1,11 @@
  require 'faker'
- 10.times do 
 
+10.times do 
   user = User.new(
     name:  Faker::Name.name,
     email:  Faker::Internet.email,
     password: Faker::Lorem.characters(8))
-  user.save!
+    user.save!
 end
 
 user = User.new(

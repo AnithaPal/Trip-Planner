@@ -14,7 +14,7 @@ class TrippersController < ApplicationController
     @trip = Trip.find(params[:trippers][:trip_id])
     @tripper = Tripper.new(trip: @trip, user: @user)
 
-    if @tripper.save
+    if @tripper.save!
       flash[:notice] = "#{@user.name} added as a tripper to your trip"
       redirect_to @trip
     else

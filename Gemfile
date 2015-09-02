@@ -37,6 +37,8 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
+gem 'pry-rails', :group => :development
+
 gem 'bootstrap-sass'
 gem 'therubyracer'
 gem 'devise'
