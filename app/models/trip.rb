@@ -1,8 +1,9 @@
 class Trip < ActiveRecord::Base
   belongs_to :user
   has_many :polls
-  has_many :users, through: :trippers
+    
   has_many :trippers, dependent: :destroy
+  has_many :users, through: :trippers
 
   default_scope { order('trips.created_at DESC') }
   

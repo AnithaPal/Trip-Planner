@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  # has_many :trips
-  has_many :trips, through: :trippers
+
   has_many :trippers, dependent: :destroy
+  has_many :trips, through: :trippers
   
   has_many :votes, dependent: :destroy
   has_many :poll_options, through: :votes
@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
         )
       end
     end
+  end
+
+  def self.available_trippers(trip)
+    all.reject { |u| u == trip.user || trip.users.include?(u) }
   end
 
   def owner?

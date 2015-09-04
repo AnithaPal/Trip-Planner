@@ -1,6 +1,6 @@
  require 'faker'
 
-10.times do 
+30.times do 
   user = User.new(
     name:  Faker::Name.name,
     email:  Faker::Internet.email,
@@ -55,8 +55,19 @@ polls = Poll.all
     )
   poll_option.save!
 end
+
+# 50.times do
+#   tripper = Tripper.new(
+#     user: users.sample, :unique => true,
+#     trip: trips.sample, :unique => true,
+#     )
+#   tripper.save!
+# end
+
+
 puts "Seeding Finished"
 puts "#{User.count} users created."
 puts "#{Trip.count} topics created."
 puts "#{Poll.count} polls created"
 puts "#{PollOption.count} poll options created"
+puts "#{Tripper.count} trippers created"
