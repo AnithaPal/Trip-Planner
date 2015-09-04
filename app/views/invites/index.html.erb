@@ -1,0 +1,10 @@
+<div class="container">
+  <a href="/contacts/gmail">Gmail</a>
+  <% if !@contacts.nil?%>
+    <% @contacts.each do |c|%>
+      <ul>
+        <li><%= c[:name]%> :  <%= c[:email]%> </li>
+      </ul> 
+    <%end%>
+  <%end%>
+</div>

@@ -49,3 +49,5 @@ gem 'jquery-turbolinks'
 gem 'cocoon'
 gem 'pundit'
 gem 'faker'
+gem 'omnicontacts'
+

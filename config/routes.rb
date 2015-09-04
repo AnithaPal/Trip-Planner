@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   
-
-  
-
   resources :trips do
     resources :polls, except: [:index]
   end
   resources :votes, only: [:create]
   resources :trippers, only: [:create, :new, :destroy] 
+ 
+  resources :invites, only: [:index, :contact]
+  match "/contacts/:importer/callback" => "invites#index", :via => [:get]
+  match "/oauth2callback" => "invites#contact", :via => [:get]
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', 
                                     registrations: "devise/registrations" }

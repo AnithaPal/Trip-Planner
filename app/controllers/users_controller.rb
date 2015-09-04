@@ -5,4 +5,8 @@ class UsersController < ApplicationController
     @user_trips = @user.trips
     @user_votes = @user.votes
   end
+
+  def index
+    @users = User.all
+  end
 end
