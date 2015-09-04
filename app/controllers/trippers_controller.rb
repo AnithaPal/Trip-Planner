@@ -10,6 +10,7 @@ class TrippersController < ApplicationController
     # @trip = Trip.find(params[:trip_id])
     # # @polls = @trip.polls
     # @tripper = Tripper.new(trip: @trip, user: @user)
+    @users  = User.all
     @user = User.find(params[:trippers][:user_id])
     @trip = Trip.find(params[:trippers][:trip_id])
     @tripper = Tripper.new(trip: @trip, user: @user)

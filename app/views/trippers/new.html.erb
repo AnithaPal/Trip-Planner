@@ -1,8 +1,13 @@
 <div class="container">
-  <h1 class="text-center"> Add Trippers </h1>
-    <%=  form_for :trippers, url: trippers_path do |f| %>
-       <%= f.hidden_field :trip_id, :value => params[:trip_id] %>
-      <%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'name') %>
-      <%= f.submit "Add", class: 'btn btn-success' %>
-    <% end %>
-</div>
+  <div class="row">
+    <div class="col=md-4">
+      <h1 class="text-center"> Add Trippers </h1>
+      <%=  form_for :trippers, url: trippers_path do |f| %>
+        <div class="drop-down">
+          <%= f.hidden_field :trip_id, :value => params[:trip_id] %>
+           <%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'name'), :include_blank => "Please select" %>
+        </div> </br>
+        <%= f.submit "Add", class: 'btn btn-success btn-sm' %>
+      <% end %>
+    </div>
+    
