@@ -5,7 +5,7 @@
   </div>
   <div class="row"> 
     <h3> Send Invitations </h3>
-    <%= form_for @invite , :url => invites_path do |f| %>
+    <%= form_for @invite, :url => invites_path do |f| %>
       <%= f.hidden_field :trip_id, :value => @invite.trip_id %>
       <%= f.label :email %>
       <%= f.email_field :email %>
