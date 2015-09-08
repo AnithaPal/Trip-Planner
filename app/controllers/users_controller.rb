@@ -5,4 +5,5 @@ class UsersController < ApplicationController
     @user_trips = @user.trips
     @user_votes = @user.votes
   end
+
 end

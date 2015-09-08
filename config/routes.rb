@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :invites
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', 
-                                    registrations: "devise/registrations" }
+                                    registrations: "users/registrations" }
 
   resources :users, only: [:show]
 

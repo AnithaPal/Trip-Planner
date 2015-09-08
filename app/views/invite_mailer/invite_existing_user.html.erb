@@ -5,13 +5,13 @@
   </head>
   <body>
     <p>
-      You are invited to participate in <%= @invite.trip.name %> trip. Please Sign up for more information. Click this <%=link_to "link", @signup_url%>.
+      You are invited to participate in a trip to <%= @trip.name %> this. Click <%=link_to "here", trip_url(@trip) %>. to view the trip details! Before clicking please sign in the application.
     </p>
     <p> Happy Planning and Tripping!!! </p>
 
     <p>
       Thanks,<br/>
-      <%= @invite.sender.name %>
+      <%= @sender.name %>
     </p>
   </body>
 </html>

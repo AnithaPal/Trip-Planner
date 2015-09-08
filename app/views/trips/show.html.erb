@@ -19,9 +19,19 @@
     <div class="col-md-6">
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> 
-          <h3> <%= link_to "Invite Trippers", new_tripper_path(trip_id: @trip.id)%> </h3> 
+          <h3> Invite Friends for <%= @trip.name %></h3> 
         </div>
         <div class="panel-body"> </div>
+          <%= form_for @invite, :url => invites_path do |f| %>
+            <%= f.hidden_field :trip_id, :value => @trip.id %>
+            <div class="form-group text-center">
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </div>
+            <div class="form-group text-center">
+              <%= f.submit 'Invite!', class: 'btn btn-success' %>
+            </div>
+          <% end %>
           <table class="table table-borderless">
             <% @trip.trippers.each do |tripper| %>
               <tr>
@@ -29,7 +39,7 @@
                   <strong> <%= tripper.user.name %> </strong> 
                 </td>
                 <td>
-                  <%= link_to tripper_path(tripper.id), method: :delete, class: 'btn' do %>
+                  <%= link_to tripper_path(tripper.id), method: :delete, class: 'btn', data: {confirm: 'Are you sure, you want to remove this tripper from your trip?'} do %>
                     <i class="glyphicon glyphicon-remove"> </i>
                   <% end %>
                 </td>
