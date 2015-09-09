@@ -1,19 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="text-center">All Trips</h1>
+      <h1 class="text-center">My Trips</h1>
       <h4 class="text-center"> <%= link_to "Add trip", new_trip_path %> </h4>
-      <% @trips.each do |trip| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading text-justify">
-          <%= link_to trip.name.capitalize, trip%>
-          </h4>
-        </div>
-      </div>
-      <% end %>
     </div>
-    <div class="col-md-2">
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default panel-info">
+        <div class="panel-heading text-center"> Trips I created </div>
+          <div class="panel-body text-justify">
+            <% @trips.each do |trip| %>
+              <ul class="list-unstyled">
+                <li> <%= link_to trip.name.capitalize, trip%> </li>
+              </ul>
+            <% end %>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default panel-info">
+        <div class="panel-heading text-center"> Trips Invited to</div>
+          <div class="panel-body text-justify ">
+            <% @trips_invited_to.each do |trip| %>
+              <ul class="list-unstyled">
+                <li> <%= link_to trip.name.capitalize, trip %> </li>
+              </ul>
+            <% end %>
+          </div>
+      </div>
     </div>
   </div>
 </div>

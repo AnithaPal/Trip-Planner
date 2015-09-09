@@ -1,7 +1,7 @@
 <div class="container">
   <div class= "row col-md-2 pull-left">
     <%= link_to trips_path, class: 'btn btn-primary' do  %>
-      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp; 
+      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp;
     <% end %>
   </div>
   <br />
@@ -9,36 +9,30 @@
   <div class="row">
     <div class="col-md-6">
       <div class="panel panel-default panel-info">
-        <div class="panel-heading text-center"> 
-          <h3> Invite Friends for <%= @trip.name %></h3> 
+        <div class="panel-heading text-center">
+          <h3> Invite Friends for <%= @trip.name %></h3>
         </div>
-        <div class="panel-body"> </div>
-          <%= form_for @invite, :url => invites_path do |f| %>
-            <%= f.hidden_field :trip_id, :value => @trip.id %>
-            <div class="form-group form-inline text-center">
-              <%= f.label :email %>
-              <%= f.email_field :email %>
-              <%= f.submit 'Invite!', class: 'btn btn-xs btn-success' %>
-            </div>
-          <% end %>
+        <div class="panel-body">
+          <%= render partial: "invites/form", locals: { invite: @invite } if @trip.user == current_user %>
           <table class="table table-borderless">
             <h3 class="text-center"> Trippers </h3>
             <% @trip.trippers.each do |tripper| %>
               <tr>
                 <td>
-                  <strong> <%= tripper.user.name %> </strong> 
+                  <strong> <%= tripper.user.name %> </strong>
                 </td>
               </tr>
             <% end %>
           </table>
       </div>
     </div>
+  </div>  
     <div class="col-md-6">
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> <h3> <%= link_to "Add a Poll", new_trip_poll_path(@trip) %> </h3> </div>
         <div class="panel-body">
           <% @trip.polls.each do |poll| %>
-            <h4> <%= link_to "#{poll.topic.capitalize}", trip_poll_path(poll.trip, poll) %> 
+            <h4> <%= link_to "#{poll.topic.capitalize}", trip_poll_path(poll.trip, poll) %>
             <small>(voted: <%= poll.votes_summary %>)</small>
             </h4>
           <% end %>
@@ -47,4 +41,3 @@
     </div>
   </div>
 </div>
-

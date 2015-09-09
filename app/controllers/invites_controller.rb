@@ -3,13 +3,12 @@ class InvitesController < ApplicationController
   def create
     @user = User.find_by(email: params[:invite][:email])
     @trip = Trip.find(params[:invite][:trip_id])
-    
+
     if @trip.user == @user || @trip.users.include?(@user)
       flash[:error] = "#{@user.email} is already invited to this #{@trip.name}"
     elsif @user.present?
       @tripper = Tripper.create(user: @user, trip: @trip)
       @sender = current_user
-
       # Send email telling them they are invited to trip
       InviteMailer.invite_existing_user(@user, @trip, @sender).deliver
       flash[:notice] = "An email invite was sent to #{@user.email} and added to the trip!"

@@ -2,7 +2,6 @@ class TrippersController < ApplicationController
 
   def new
     @trip = Trip.find(params[:trip_id])
-    @users  = User.available_trippers(@trip)
     @tripper = Tripper.new
   end
 

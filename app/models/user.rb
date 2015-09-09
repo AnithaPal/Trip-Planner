@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :trips
+
   has_many :trippers, dependent: :destroy
-  has_many :trips, through: :trippers
+  has_many :trips_invited_to, through: :trippers, source: :trip
   
   has_many :votes, dependent: :destroy
   has_many :poll_options, through: :votes
@@ -33,8 +35,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.available_trippers(trip)
-    all.reject { |u| u == trip.user || trip.users.include?(u) }
+  def all_joined_trips
+    self.class.eager_load(:trippers).eager_load(:trips).where("trips.user_id = ? OR trippers.user_id = ?",  id, id)
   end
 
   def owner?
@@ -44,10 +46,6 @@ class User < ActiveRecord::Base
   def guest?
     role == 'guest'
   end
-
-  # def voted_for?(poll)
-  #   votes.any? {|v| v.poll_option.poll == poll}
-  # end
 
   def voted_for?(poll)
     # user > votes < po < poll
