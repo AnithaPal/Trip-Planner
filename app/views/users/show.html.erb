@@ -6,15 +6,57 @@
           <h2 class="media-heading text-center"> <%= @user.name.capitalize %> </h2>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
-  <h3>Participation in polls</h3>
-  <% @user.poll_options.each do |option| %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %></div>
-        <div class="panel-body">
-          <%= option.title %>
+  <div class="row">
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs">
+         <li class="active"><a href="#polls" data-toggle="tab">Polls</a></li>
+         <li><a href="#trips" data-toggle="tab">Trips</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane" id="polls">
+        <h3 class="text-center">Participation in polls</h3>
+        <% @user.poll_options.each do |option| %>
+          <div class="panel panel-default panel-info">
+            <div class="panel-heading text-center"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %>
+            </div>
+            <div class="panel-body">
+              <%= option.title %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+        <div class="tab-pane" id="trips">
+          <h3 class="text-center"> Trips </h3> </br>
+          <% @user.trips.each do |trip| %>
+            <div class= "row">
+              <div class="panel panel-default panel-info col-md-8 col-md-offset-2">
+               <div class="panel-heading text-center"> <%= link_to trip.name, trip_path(trip) %> </div>
+                <div class="panel-body">
+                  <table class="table table-borderless">
+                    <% trip.trippers.each do |tripper| %>
+                      <tr>
+                        <td>
+                          <strong> <%= tripper.user.name %> </strong> 
+                        </td>
+                        <td>
+                          <%= link_to tripper_path(tripper.id), method: :delete, class: 'btn', data: {confirm: 'Are you sure, you want to remove this tripper from your trip?'} do %>
+                          <i class="glyphicon glyphicon-remove"> </i>
+                        <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-  <% end %>
+    </div>
+  </div>
 </div>
+
+

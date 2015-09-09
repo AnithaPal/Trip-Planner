@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
-    <h1>Edit Trip</h1>
+    <h1>Edit <%= @trip.name %> Trip
+      <small>
+        <%= link_to @trip, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure you want to delete this trip?'} do %>
+          <i class="glyphicon glyphicon-trash"> </i>&nbsp; 
+        <% end %>
+      </small>
+    </h1>
     <%= render 'trips/form' %>
   </div>
 </div>

@@ -10,4 +10,6 @@ class Trip < ActiveRecord::Base
   default_scope { order('trips.created_at DESC') }
   
   validates_presence_of :name
+
+  
 end
