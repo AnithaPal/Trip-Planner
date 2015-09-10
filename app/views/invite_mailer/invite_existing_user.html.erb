@@ -5,8 +5,25 @@
   </head>
   <body>
     <p>
-      You are invited to participate in a trip to <%= @trip.name %> this. Click <%=link_to "here", trip_url(@trip) %>. to view the trip details! Before clicking please sign in the application.
+      You are invited to participate in a trip to <%= @trip.name %> this.
+      Tripit will help us to talk about the trip, build an itinerary, and share group expenses.
+      Click <%=link_to "here", trip_url(@trip) %>. to view the trip details! Before clicking this link please sign in the application.
     </p>
+    <div class="panel panel-default panel-info">
+      <div class="panel-heading text-center">
+         Are you in?
+      </div>
+      <div class="panel-body">
+        <div class="btn-group">
+        <%= link_to "Yes!", "#" class: 'btn btn-success' %>
+        <%= link_to "No!", "#", class: 'btn btn-danger' %>
+        <%= link_to "More details!!!",  "#", class: 'btn btn-info' %>
+       </div>
+      </div>
+    </div>
+
+    <p>
+      If you
     <p> Happy Planning and Tripping!!! </p>
 
     <p>
