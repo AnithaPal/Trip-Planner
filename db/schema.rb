@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906185016) do
+ActiveRecord::Schema.define(version: 20150910172048) do
 
   create_table "invites", force: :cascade do |t|
     t.string   "email"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20150906185016) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "start_date"
+    t.text     "end_date"
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id"

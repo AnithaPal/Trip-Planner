@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  
+
   def index
     @trips = current_user.trips
     @trips_invited_to = current_user.trips_invited_to
@@ -52,7 +52,7 @@ class TripsController < ApplicationController
   def destroy
     @trip = Trip.find(params[:id])
     authorize @trip
-    
+
     if @trip.destroy
       flash[:notice] = "Trip was successfully deleted"
       redirect_to trips_path
@@ -63,8 +63,8 @@ class TripsController < ApplicationController
   end
 
   private
+  
   def trip_params
-    params.require(:trip).permit(:name)
-
+    params.require(:trip).permit(:name, :start_date, :end_date)
   end
 end
