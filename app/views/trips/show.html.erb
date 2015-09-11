@@ -7,7 +7,7 @@
   <br />
   <h1 class="text-center"> <%= link_to @trip.name.capitalize, edit_trip_path(@trip)  %> </h1>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center">
           <h3> Invite Friends for <%= @trip.name %></h3>
@@ -26,8 +26,8 @@
           </table>
       </div>
     </div>
-  </div>  
-    <div class="col-md-6">
+  </div>
+    <div class="col-md-3">
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> <h3> <%= link_to "Add a Poll", new_trip_poll_path(@trip) %> </h3> </div>
         <div class="panel-body">
@@ -36,6 +36,32 @@
             <small>(voted: <%= poll.votes_summary %>)</small>
             </h4>
           <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default panel-info">
+        <div class="panel-heading text-center"> RSVP Status</h3> </div>
+        <div class="panel-body">
+          <table class="table table-borderless table-nonfluid">
+            <thead>
+              <tr>
+                <td> <strong> Name </strong> </td>
+                <td> <strong> Status </strong> </td>
+                <td>  </td>
+              </tr>
+            </thead>
+            <% @trip.invites.each do |invite| %>
+              <tr>
+                <td> <%= invite.email %> </td>
+                <td> <%= invite.status %> </td>
+                <td> <%= link_to invite_path(invite.id),method: :delete, class: 'btn  btn-xs', data: {confirm: 'Are you sure?'} do %>
+                  <i class="glyphicon glyphicon-trash"> </i>&nbsp;
+                <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
         </div>
       </div>
     </div>
