@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
-  
 
-  
+
+
 
   resources :trips do
     resources :polls, except: [:index]
   end
 
   resources :votes, only: [:create]
-  resources :trippers, only: [:create, :new, :destroy] 
+  resources :trippers, only: [:create, :new, :destroy]
 
-  resources :invites
+  resources :invites do
+    member do
+      post "accept"
+      post "decline"
+    end 
+  end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', 
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks',
                                     registrations: "users/registrations" }
 
   resources :users, only: [:show]

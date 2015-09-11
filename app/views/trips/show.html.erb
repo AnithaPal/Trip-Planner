@@ -43,12 +43,13 @@
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> RSVP Status</h3> </div>
         <div class="panel-body">
-          <table class="table table-borderless table-nonfluid">
+          <h4>  <%= @trip.invites.count %> invited </h4>
+          <table class="table table-striped table-borderless table-nonfluid">
             <thead>
               <tr>
                 <td> <strong> Name </strong> </td>
                 <td> <strong> Status </strong> </td>
-                <td>  </td>
+                <td> <strong>  </strong> </td>
               </tr>
             </thead>
             <% @trip.invites.each do |invite| %>
@@ -56,7 +57,7 @@
                 <td> <%= invite.email %> </td>
                 <td> <%= invite.status %> </td>
                 <td> <%= link_to invite_path(invite.id),method: :delete, class: 'btn  btn-xs', data: {confirm: 'Are you sure?'} do %>
-                  <i class="glyphicon glyphicon-trash"> </i>&nbsp;
+                  <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
                 <% end %>
                 </td>
               </tr>

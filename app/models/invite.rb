@@ -6,6 +6,8 @@ class Invite < ActiveRecord::Base
   before_create :generate_token
   before_save :check_user_existence
 
+  # validates_uniqueness_of :recipient_id, :class_name => 'User', scope: :trip_id, message: " Invitation has already sent for this trip"
+
   def generate_token
     self.token = Digest::SHA1.hexdigest([self.trip_id, Time.now, rand].join)
   end
@@ -16,4 +18,16 @@ class Invite < ActiveRecord::Base
       self.recipient_id = recipient.id
     end
   end
+
+  def accepted
+    self.status = "accept"
+    Tripper.create(user: recipient, trip: trip)
+    save
+  end
+
+  def declined
+    self.status = "decline"
+    save
+  end
+
 end

@@ -13,9 +13,9 @@
       </div>
       <div class="panel-body">
         <div class="btn-group">
-         <button> <%= link_to "Yes!", "#", class: 'btn btn-success' %> </button>
-         <button> <%= link_to "No!", "#", class: 'btn btn-danger' %> </button>
-         <button> <%= link_to "More details!!!", trip_url(@trip), class: 'btn btn-info' "#" %> </button>
+          <button> <%= link_to "Yes",  accept_invite_url(@invite) %> </button>
+          <button> <%= link_to "No!", decline_invite_url(@invite) %> </button>
+          <button> <%= link_to "More details!!!", trip_url(@trip) %> </button>
        </div>
       </div>
     </div>
