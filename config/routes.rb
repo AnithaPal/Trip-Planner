@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :invites do
     member do
-      post "accept"
-      post "decline"
-    end 
+      get "accept"
+      get "decline"
+    end
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks',

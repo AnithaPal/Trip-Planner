@@ -7,10 +7,10 @@ class InvitesController < ApplicationController
     @invite = Invite.new(invite_params)
     @invite.sender_id = current_user.id
 
-    if @invite.save
-      if  @trip.users.include?(@user) || @trip.user == @user
-        flash[:error] = "#{@user.email} is already invited to this #{@trip.name}"
-      elsif @user.present?
+    if @trip.is_owner_or_invinted?(@user)
+      flash[:error] = "#{@user.email} is already invited to this #{@trip.name}"
+    elsif @invite.save
+      if @user.present?
         @invite.recipient.id = @user.id
         InviteMailer.invite_existing_user(@invite, @trip).deliver
         flash[:notice] = "An email invite was sent to #{@user.email}"
@@ -19,8 +19,9 @@ class InvitesController < ApplicationController
         flash[:notice] = "Trip invitaion has successfully sent to #{@invite.email}."
       end
     else
-        flash[:error] = "Sorry, there was some error in sending an invite. please try again"
+      flash[:error] = "Sorry, there was some error in sending an invite. please try again"
     end
+
     redirect_to @trip
   end
 
@@ -29,6 +30,8 @@ class InvitesController < ApplicationController
     @trip = @invite.trip
 
     if @invite.destroy
+      Tripper.find_by(user: @invite.recipient, trip: @trip).try(:delete)
+
       flash[:notice] = "Your invite is deleted successfully"
       redirect_to @trip
     else
@@ -50,8 +53,13 @@ class InvitesController < ApplicationController
         redirect_to @trip
       end
     else
-      #sign user up
-      #accept
+      if @invite.accepted
+        flash[:notice] = "Sign up in this app for planning your trip"
+        redirect_to new_user_registration_url(:invite_token => @invite.token)
+      else
+        flash[:error] = "Sorry, there was some problem in deleting your invite. Please try again."
+        redirect_to @trip
+      end
     end
   end
 

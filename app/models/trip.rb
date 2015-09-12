@@ -13,8 +13,8 @@ class Trip < ActiveRecord::Base
 
   validates_presence_of :name
 
-  # def attended_by?(person)
-  #   person == user || trip.invitees.include?(person)
-  # end
+  def is_owner_or_invinted?(person)
+    person == user || users.include?(person)
+  end
 
 end

@@ -2,9 +2,9 @@ You are invited to participate in <%= @invite.trip.name %> trip. Please Sign up 
 
    Are you in?
 
-<%= link_to "Yes!", "#", class: 'btn btn-success' %>
-<%= link_to "No!", "#", class: 'btn btn-danger' %>
-<%= link_to "More details!!!", trip_url(@trip), class: 'btn btn-info' %>
+<%= link_to "Yes", accept_invite_url(@invite) %>
+<%= link_to "No!", decline_invite_url(@invite) %>
+<%= link_to "More details!!!", trip_url(@trip) %> 
 
  Happy Planning and Tripping!!!
 
