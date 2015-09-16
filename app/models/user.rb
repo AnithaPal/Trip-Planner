@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :trips
 
+  has_many :expenses
+
   has_many :trippers, dependent: :destroy
   has_many :trips_invited_to, through: :trippers, source: :trip
 
