@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  
+
   def new
     build_resource({})
 
@@ -13,20 +13,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @trip = Trip.find(params[:trip_id]) if params[:trip_id]
+
+    @invite = Invite.find_by(token: params[:invite_token]) if params[:invite_token]
+
     build_resource(sign_up_params)
 
     resource.save
     yield resource if block_given?
     if resource.persisted?
 
-      @tripper = Tripper.create(user: resource, trip: @trip) if @trip
+      @invite.accepted(resource) if @invite
 
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
-        if @tripper
-          respond_with resource, location: trip_path(@trip)
+        if @invite
+          respond_with resource, location: trip_path(@invite.trip)
         else
           respond_with resource, location: after_sign_up_path_for(resource)
         end

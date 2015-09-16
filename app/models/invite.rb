@@ -19,7 +19,8 @@ class Invite < ActiveRecord::Base
     end
   end
 
-  def accepted
+  def accepted(recipient = nil)
+    self.recipient = recipient if recipient
     self.status = "accept"
     Tripper.create(user: recipient, trip: trip)
     save

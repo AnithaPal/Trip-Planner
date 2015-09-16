@@ -1,0 +1,21 @@
+<div class="container">
+    <p>
+    Hello, </br>
+    You are invited to participate in <%= @invite.trip.name %> trip.
+    Tripit will help you to discuss about this trip, build an itinerary, and share group expenses.
+    Please Sign up for more information.
+  </p>
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading text-center">
+       Are you in?
+    </div>
+    <div class="panel-body">
+      <div class="btn-group">
+        <button> <%= link_to "Yes", new_user_registration_url(invite_token: @invite.token) %> </button>
+        <button> <%= link_to "No!", decline_invite_url(@invite) %> </button>
+     </div>
+    </div>
+  </div>
+
+  <p> Happy Planning and Tripping!!! </p>
+</div>

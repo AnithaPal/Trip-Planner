@@ -50,6 +50,7 @@
                 <td> <strong> Name </strong> </td>
                 <td> <strong> Status </strong> </td>
                 <td> <strong>  </strong> </td>
+                <td> <strong> Invite link </strong> </td>
               </tr>
             </thead>
             <% @trip.invites.each do |invite| %>
@@ -60,6 +61,7 @@
                   <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
                 <% end %>
                 </td>
+                <td> <%= link_to "Copy link", new_user_invites_path(invite_token: invite.token), class: 'btn  btn-xs'%></td>
               </tr>
             <% end %>
           </table>

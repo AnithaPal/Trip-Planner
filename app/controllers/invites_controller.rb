@@ -7,7 +7,7 @@ class InvitesController < ApplicationController
     @invite = Invite.new(invite_params)
     @invite.sender_id = current_user.id
 
-    if @trip.is_owner_or_invinted?(@user)
+    if @trip.is_owner_or_invited?(@user)
       flash[:error] = "#{@user.email} is already invited to this #{@trip.name}"
     elsif @invite.save
       if @user.present?
@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
         InviteMailer.invite_existing_user(@invite, @trip).deliver
         flash[:notice] = "An email invite was sent to #{@user.email}"
       else
-        InviteMailer.invite_new_user(@invite, @trip, new_user_registration_url(:invite_token => @invite.token)).deliver
+        InviteMailer.invite_new_user(@invite, @trip).deliver
         flash[:notice] = "Trip invitaion has successfully sent to #{@invite.email}."
       end
     else
@@ -42,24 +42,13 @@ class InvitesController < ApplicationController
 
   def accept
     @invite = Invite.find(params[:id])
-    @trip = @invite.trip
 
-    if @invite.recipient.present?
-      if @invite.accepted
-        flash[:notice] = "You are in this trip. Have fun planning"
-        redirect_to @trip
-      else
-        flash[:error] = "Sorry, there was some problem in deleting your invite. Please try again."
-        redirect_to @trip
-      end
+    if @invite.accepted
+      flash[:notice] = "You are in this trip. Have fun planning"
+      redirect_to @invite.trip
     else
-      if @invite.accepted
-        flash[:notice] = "Sign up in this app for planning your trip"
-        redirect_to new_user_registration_url(:invite_token => @invite.token)
-      else
-        flash[:error] = "Sorry, there was some problem in deleting your invite. Please try again."
-        redirect_to @trip
-      end
+      flash[:error] = "Sorry, there was some problem in deleting your invite. Please try again."
+      redirect_to @invite.trip
     end
   end
 
@@ -76,6 +65,16 @@ class InvitesController < ApplicationController
     end
   end
 
+  def new_user
+    if params[:invite_token]
+      @invite = Invite.find_by(token: params[:invite_token])
+    else
+      flash[:error] = "You must have a valid invitation"
+      redirect_to :root
+    end
+  end
+
+  private
 
   def invite_params
     params.require(:invite).permit(:trip_id, :email)

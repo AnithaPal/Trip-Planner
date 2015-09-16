@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-
   resources :trips do
     resources :polls, except: [:index]
   end
@@ -14,6 +11,9 @@ Rails.application.routes.draw do
     member do
       get "accept"
       get "decline"
+    end
+    collection do
+      get "new_user"
     end
   end
 

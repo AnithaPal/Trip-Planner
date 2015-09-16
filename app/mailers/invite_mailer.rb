@@ -1,9 +1,8 @@
 class InviteMailer < ApplicationMailer
 
-  def invite_new_user(invite, trip, signup_url)
+  def invite_new_user(invite, trip)
     @invite = invite
     @trip = trip
-    @signup_url = signup_url
 
     mail(to: @invite.email, subject: 'Welcome to our trip!!!')
   end
