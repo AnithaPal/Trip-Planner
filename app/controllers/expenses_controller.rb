@@ -44,10 +44,10 @@ class ExpensesController < ApplicationController
 
     if @expense.update_attributes(expense_params)
       flash[:notice] = "Expense was updated successfully"
-      redirect_to trip_expenses(@trip)
+      redirect_to trip_expenses_path(@trip)
     else
       flash[:error] = "Sorry, there was some problem in updating your expense. Please try again"
-      redirect_to trip_expenses(@trip)
+      redirect_to trip_expenses_path(@trip)
     end
   end
 
@@ -57,10 +57,10 @@ class ExpensesController < ApplicationController
 
     if @expense.destroy
       flash[:notice] = "Expense was deleted successfully"
-      redirect_to trip_expenses(@trip)
+      redirect_to trip_expenses_path(@trip)
     else
       flash[:error] = "Sorry, there was some problem in deleting your expense. Please try again"
-      redirect_to trip_expenses(@trip)
+      redirect_to edit_trip_expense_path(@expense.trip, @expense)
     end
   end
 

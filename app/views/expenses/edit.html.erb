@@ -3,4 +3,10 @@
     <h1>Edit Expense</h1>
     <%= render 'expenses/form' %>
   </div>
+  <div class="row">
+    <small>
+      <%= link_to trip_expense_path(@expense.trip, @expense), method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure you want to delete this trip?'} do %>
+        <i class="glyphicon glyphicon-trash"> </i>&nbsp;
+      <% end %>
+    </small>
 </div>

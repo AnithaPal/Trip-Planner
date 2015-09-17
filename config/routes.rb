@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :trips do
-    resources :expenses
+    resources :expenses, except: [:show]
     resources :polls, except: [:index]
   end
 

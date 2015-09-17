@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1> Trip Expense </h1>
+    <h1 class="text-center"> Trip Expense </h1>
   </div>
   <div class="row">
     <div class="col-md-8">
@@ -21,21 +21,27 @@
           <table class="table table-bordered table-striped ">
             <thead>
               <tr>
-                <td> User </td>
-                <td> Category </td>
-                <td> Amount Spent </td>
-                <td> Amount Owe </td>
-                <td> Amount get </td>
+                <td> <strong>  User </strong> </td>
+                <td> <strong> Category </strong> </td>
+                <td> <strong> Amount Spent </strong> </td>
+                <td> <strong> Amount Owe  </strong> </td>
+                <td> <strong> Amount get </strong>  </td>
+                <td> <strong> Edit </strong> </td>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-              </tr>
+              <% @trip.expenses.each do |expense| %>
+                <tr>
+                  <td> <%= expense.user.name %> </td>
+                  <td> <%= expense.category %> </td>
+                  <td><%= expense.amount_spent %> </td>
+                  <td> <%= expense.amount_owe %> </td>
+                  <td> <%= expense.amount_get %></td>
+                  <td> <%= link_to  edit_trip_expense_path(expense.trip, expense), class: 'btn  btn-xs' do %>
+                    <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
+                  <% end %>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
