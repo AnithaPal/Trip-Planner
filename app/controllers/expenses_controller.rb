@@ -3,6 +3,7 @@ class ExpensesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @expenses = @trip.expenses
+    @expense = Expense.new
   end
 
   def show
@@ -14,10 +15,21 @@ class ExpensesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @expense = Expense.new
   end
+
   def create
     @trip = Trip.find(params[:trip_id])
-    @expense = Trip.new(expense_params)
-    @expense.trip = @trip
+
+    if @trip.is_owner_or_invited?(current_user)
+      @expense = Expense.new(expense_params)
+      @expense.trip = @trip
+      @expense.user = current_user
+      @expense.save
+      flash[:notice] = "Expense was saved successfully"
+      redirect_to trip_expenses_path(@trip)
+    else
+      flash[:error] = "Sorry, there was some problem in creating your expense. Please try again."
+      redirect_to :root
+    end
   end
 
 

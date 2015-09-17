@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   resources :trips do
     resources :expenses
     resources :polls, except: [:index]

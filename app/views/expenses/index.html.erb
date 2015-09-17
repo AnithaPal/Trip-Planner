@@ -1,2 +1,55 @@
-<h1>Expenses#index</h1>
-<p>Find me in app/views/expenses/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1> Trip Expense </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default panel-info">
+        <div class= "panel-heading">
+          <table class="table">
+            <thead>
+              <tr>
+                <td> <strong> Trip: </strong> <%= @trip.name %> </td>
+                <td> <strong> Number of trippers: </strong>  <%=  @trip.trippers.count %> </td>
+                <td> <strong> Total Expense: </strong> <%= @trip.total_expenses %> </td>
+                <td> <strong>Per head:</strong><%= @trip.expense_per_person  %> </td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="panel panel-body">
+          <table class="table table-bordered table-striped ">
+            <thead>
+              <tr>
+                <td> User </td>
+                <td> Category </td>
+                <td> Amount Spent </td>
+                <td> Amount Owe </td>
+                <td> Amount get </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default panel-info">
+        <div class= "panel-heading">
+          <h3> Expense Form </h3>
+        </div>
+        <div class="panel-body">
+          <%= render 'expenses/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

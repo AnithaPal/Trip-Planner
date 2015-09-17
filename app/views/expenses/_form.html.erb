@@ -1,0 +1,28 @@
+<%= form_for [@trip, @expense] do |f| %>
+<% if @expense.errors.any? %>
+  <div class="alert alert-danger">
+    <h4> There is <%= pluralize(@expense.errors.count, "error") %>.</h4>
+    <ul>
+      <% @expense.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+  <%= form_group_tag(@expense.errors[:name]) do %>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.text_field :category, class: 'form-control', placeholder: "Enter a category" %> <br/>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :amount_spent %>
+      <%= f.number_field :amount_spent, class: 'form-control', placeholder: "Enter amount" %>
+    </div>
+  <% end %>
+
+
+  <div class="form-group text-center">
+    <br>
+    <%= f.submit "Enter", class: 'btn btn-success' %>
+  </div>
+<% end %>
