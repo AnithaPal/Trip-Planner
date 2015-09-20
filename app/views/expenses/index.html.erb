@@ -10,7 +10,7 @@
             <thead>
               <tr>
                 <td> <strong> Trip: </strong> <%= @trip.name %> </td>
-                <td> <strong> Number of trippers: </strong>  <%=  @trip.trippers.count %> </td>
+                <td> <strong> Number of trippers: </strong>  <%=  @trip.user_count %> </td>
                 <td> <strong> Total Expense: </strong> <%= @trip.total_expenses %> </td>
                 <td> <strong>Per head:</strong><%= @trip.expense_per_person  %> </td>
               </tr>
@@ -34,7 +34,7 @@
                 <tr>
                   <td> <%= expense.user.name %> </td>
                   <td> <%= expense.category %> </td>
-                  <td><%= expense.amount_spent %> </td>
+                  <td> <%= expense.amount_spent %> </td>
                   <td> <%= expense.amount_owe %> </td>
                   <td> <%= expense.amount_get %></td>
                   <td> <%= link_to  edit_trip_expense_path(expense.trip, expense), class: 'btn  btn-xs' do %>
@@ -45,6 +45,26 @@
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="col-md-4">
+        <table class="table table-borderless table-striped ">
+          <thead>
+            <tr>
+              <td> <strong>  Giver </strong> </td>
+              <td> <strong> Receiver </strong> </td>
+              <td> <strong> Amount </strong> </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @trip.reconciliations.each do |recon| %>
+              <tr>
+                <td> <%= recon.giver %> </td>
+                <td> <%= recon.receiver %> </td>
+                <td> <%= recon.amount %> </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="col-md-4">

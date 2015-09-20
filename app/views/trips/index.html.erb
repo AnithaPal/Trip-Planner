@@ -10,11 +10,15 @@
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> Trips I created </div>
           <div class="panel-body text-justify">
-            <table class="table table-striped table-borderless table-nonfluid">
+            <table class="table table-borderless table-nonfluid">
               <% @trips.each do |trip| %>
                 <tr>
                   <td> <%= link_to trip.name.capitalize, trip%> </td>
-                  <td> <%= link_to "Expenses", trip_expenses_path(trip) %> </td>
+                  <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
+                        <span class="glyphicon glyphicon-usd"></span>&nbsp;
+                       <% end %>
+                  </td>
+
                 </tr>
               <% end %>
             </table>
@@ -26,12 +30,18 @@
       <div class="panel panel-default panel-info">
         <div class="panel-heading text-center"> Trips Invited to</div>
           <div class="panel-body text-justify ">
-            <% @trips_invited_to.each do |trip| %>
-              <ul class="list-unstyled">
-                <li> <%= link_to trip.name.capitalize, trip %> </li>
-              </ul>
+            <table class="table table-borderless table-nonfluid">
+             <% @trips_invited_to.each do |trip| %>
+              <tr>
+                <td> <%= link_to trip.name.capitalize, trip %> </td>
+                <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
+                      <span class="glyphicon glyphicon-usd"></span>&nbsp;
+                     <% end %>
+                </td>
+              </tr>
             <% end %>
-          </div>
+          </table>
+        </div>
       </div>
     </div>
   </div>

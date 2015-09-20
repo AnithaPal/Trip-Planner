@@ -18,9 +18,8 @@
         <li class="nav-hover"><%= link_to "Home", root_path %></li>
         <li class="nav-hover"><%= link_to "About", about_path %></li>
         <% if current_user %>
-        <li> <%= link_to "My Trip", trips_path %> </li>
-        <li> <%= link_to "Trip Expense", '#' %> </li>
-        <% end %>
+          <li> <%= link_to "My Trip", trips_path %> </li>
+        <% end %>  
       </ul>
 
       <div class="user-info navbar-right">

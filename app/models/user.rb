@@ -54,4 +54,8 @@ class User < ActiveRecord::Base
     poll_options.includes(:poll).where(poll: poll).present?
   end
 
+  def expenses_for_trip(trip)
+    expenses.where(trip: trip).sum(:amount_spent)
+  end
+
 end

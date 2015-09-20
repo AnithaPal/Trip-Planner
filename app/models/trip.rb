@@ -20,7 +20,80 @@ class Trip < ActiveRecord::Base
   end
 
   def expense_per_person
-    count = self.trippers.count
-    self.expenses.sum(:amount_spent) / count
+    expenses.sum(:amount_spent) / user_count
+  end
+
+  def user_count
+    trippers.count
+  end
+
+  def all_users
+    col = users.to_a
+    col
+  end
+
+  def reconciliations
+    result = []
+    hsh = { givers: [], receivers: [] }
+
+    all_users.each do |user|
+      diff = expense_per_person - user.expenses_for_trip(self)
+
+      if diff > 0
+        result << Reconciliation.new("unsure", user.name, diff.abs)
+        hsh[:givers] << [user.name, diff.abs]
+      else
+        hsh[:receivers] << [user.name, diff.abs]
+      end
+    end
+
+    result = sort_money(hsh)
+  end
+
+  def sort_money(hsh)
+    result = []
+
+    amts_owed = hsh[:givers].sort { |x, y| x.last <=> y.last }
+    amts_over = hsh[:receivers].sort { |x, y| x.last <=> y.last }
+
+    ri = amts_over.length
+    gi = amts_owed.length
+
+    while ri > 0 && gi > 0
+      receiver, over = amts_over[ri - 1]
+      giver, owed = amts_owed[gi - 1]
+
+      diff = over - owed
+      if diff > 0
+        result << Reconciliation.new(receiver, giver, owed)
+        amts_over << [receiver, diff]
+        amts_over.sort! { |x, y| x.last <=> y.last }
+        gi -= 1
+      elsif diff < 0
+        result << Reconciliation.new(receiver, giver, over)
+        amts_owed << [giver, diff.abs]
+        amts_owed.sort! { |x, y| x.last <=> y.last }
+        ri -= 1
+      elsif diff == 0
+        result << Reconciliation.new(receiver, giver, owed)
+        ri -= 1
+        gi -= 1
+      end
+
+      amts_over.delete([receiver, over])
+      amts_owed.delete([giver, owed])
+    end
+
+    result
+  end
+end
+
+class Reconciliation
+  attr_reader :giver, :receiver, :amount
+
+  def initialize(receiver, giver, amount)
+    @giver = giver
+    @receiver = receiver
+    @amount = amount
   end
 end
