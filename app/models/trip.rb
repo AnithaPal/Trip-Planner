@@ -20,7 +20,13 @@ class Trip < ActiveRecord::Base
   end
 
   def expense_per_person
-    expenses.sum(:amount_spent) / user_count
+    user_amt = user_count
+
+    if user_amt > 0
+      expenses.sum(:amount_spent) / user_amt
+    else
+      expenses.sum(:amount_spent)
+    end
   end
 
   def user_count
@@ -85,15 +91,5 @@ class Trip < ActiveRecord::Base
     end
 
     result
-  end
-end
-
-class Reconciliation
-  attr_reader :giver, :receiver, :amount
-
-  def initialize(receiver, giver, amount)
-    @giver = giver
-    @receiver = receiver
-    @amount = amount
   end
 end
