@@ -1,0 +1,32 @@
+<nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="#" class="navbar-brand">Brand</a>
+  </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"> <%= link_to "Home", root_path %> </li>
+      <li class="nav-hover"> <%= link_to "About", about_path %> </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li> Hello<%= link_to current_user.name, user_path(current_user) %> </li>
+        <li> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
+          <span class= "glyphicon glyphicon-user"></span>
+          <% end %>
+        </li>
+        <li> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
+          <span class="glyphicon glyphicon-log-out" ></span>
+          <% end %>
+        </li>
+      <% else %>
+        <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %> </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

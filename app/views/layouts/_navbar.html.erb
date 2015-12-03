@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top ">
-  <div class="container-fluid head-style">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-header-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -8,38 +8,37 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-brand" >
-        <%= link_to "TrpIt", root_path %>
-      </div>
+    </div>
+    <div class="navbar-brand" >
+        <%= link_to "TriPlanner", root_path %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-header-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav nav-left">
         <li class="nav-hover"><%= link_to "Home", root_path %></li>
         <li class="nav-hover"><%= link_to "About", about_path %></li>
         <% if current_user %>
           <li> <%= link_to "My Trip", trips_path %> </li>
-        <% end %>  
+        <% end %>
       </ul>
-
-      <div class="user-info navbar-right">
-        <ul>
-          <% if current_user %>
-            Hello <%= link_to (current_user.name) %>!
-            <%= link_to 'Profile', user_path(current_user) %>
-            <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li> Hello <%= link_to (current_user.name) %>! </li>
+          <li> <%= link_to 'Profile', user_path(current_user) %> </li>
+          <li> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
             <span class= "glyphicon glyphicon-user"></span>
             <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
+          </li>
+          <li> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
             <span class="glyphicon glyphicon-log-out" ></span>
             <% end %>
-          <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %>
-            <%= link_to "Sign up", new_user_registration_path, class: 'sign btn btn-success btn-sm' %>
-            <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-          <% end %>
-        </ul>
-      </div>
+          </li>
+        <% else %>
+          <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %> </li>
+          <li> <%= link_to "Sign up", new_user_registration_path, class: 'sign btn btn-success btn-sm' %> </li>
+          <li> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
