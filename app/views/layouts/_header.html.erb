@@ -14,6 +14,7 @@
       <li class="nav-hover"> <%= link_to "About", about_path %> </li>
       <% if current_user %>
         <li> <%= link_to "My Trip", trips_path %> </li>
+        <li> <%= link_to "New trip", new_trip_path %> </li>
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
