@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def all_joined_trips
+  def all_owned_and_joined_trips
     self.class.eager_load(:trippers).eager_load(:trips).where("trips.user_id = ? OR trippers.user_id = ?",  id, id)
   end
 
