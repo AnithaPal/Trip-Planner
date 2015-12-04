@@ -29,7 +29,8 @@ class Trip < ActiveRecord::Base
   end
 
   def user_count
-    trippers.count
+    no_of_owners = 1
+    trippers.count + no_of_owners
   end
 
   def all_users
