@@ -20,7 +20,12 @@ class Trip < ActiveRecord::Base
   end
 
   def expense_per_person
-    expenses.sum(:amount_spent) / user_count
+    user_amt = user_count
+    if user_amt > 0
+      expenses.sum(:amount_spent) / user_amt
+    else
+      expenses.sum(:amount_spent)
+    end
   end
 
   def user_count
