@@ -14,12 +14,74 @@
  *= require_tree .
  *= require_self
  */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Lora:400,700,400italic);
+
+// Typography
+$font-family-main: 'Lora', serif;
+$font-family-headings: 'Gorditas', serif;
+
+// Typography colors
+// Header colors
+$header-link-color: #FAEBD7;
+
+html{
+  background-position: center, center;
+  background: url(http://i.imgur.com/oc3yHdM.jpg?1) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body{
+  font-family: $font-family-main, sans-serif;
+  line-height: normal;
+  color: #F0FFFF;
+  background: transparent;
+}
 
 .content {
   padding-top: 100px;
+  margin-top: 20px;
 }
+.navbar-custom{
+  height: 100px;
+  padding:10px;
+  background: transparent;
+  border: transparent;
+  .navbar-brand
+  {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+  }
+  .navbar-nav li a {
+   line-height: 50px;
+   color: $header-link-color;
+   font-size: 2rem;
+   font-family: $font-family-headings;
+  }
+
+  .navbar-right  li a{
+    margin-right: 15px;
+    padding-right: 10px;
+  }
+}
+
+.glyphicons {
+padding-left: 0;
+padding-bottom: 1px;
+margin-bottom: 20px;
+list-style: none;
+overflow: hidden;
+}
+
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
@@ -31,4 +93,13 @@
  }
  .table-nonfluid {
    width: auto !important;
+}
+
+.footer-custom{
+  background: transparent;
+  height: 60px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

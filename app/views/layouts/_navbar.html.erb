@@ -22,21 +22,24 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <div class= "btn-group btn-group-justified">
         <% if current_user %>
-          <li> Hello <%= link_to (current_user.name) %>! </li>
-          <li> <%= link_to 'Profile', user_path(current_user) %> </li>
-          <li> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
+          <li class="button"> <%= link_to current_user.name.capitalize, user_path(current_user), class: 'btn' %> </li>
+          <li class="button"> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
             <span class= "glyphicon glyphicon-user"></span>
             <% end %>
           </li>
-          <li> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
+          <li class="button"> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
             <span class="glyphicon glyphicon-log-out" ></span>
             <% end %>
           </li>
+        </div>
         <% else %>
-          <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %> </li>
-          <li> <%= link_to "Sign up", new_user_registration_path, class: 'sign btn btn-success btn-sm' %> </li>
+          <div class="btn-group">
+          <li> <%= link_to "Sign in", new_user_session_path, class: 'btn btn-success btn-sm' %> </li>
+          <li> <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-sm' %> </li>
           <li> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> </li>
+        </div>
         <% end %>
       </ul>
     </div>
