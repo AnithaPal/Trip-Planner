@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center"> Trip Expense </h1>
+
   </div>
   <div class="row">
     <div class="col-md-8">
       <div class="panel panel-default panel-info">
         <div class= "panel-heading">
-          <table class="table">
+          <h1 class="text-center heading"> Trip Expense </h1>
+          <table class="table" id= "white-color">
             <thead>
               <tr>
                 <td> <strong> Trip: </strong> <%= @trip.name %> </td>
@@ -70,7 +71,7 @@
     <div class="col-md-4">
       <div class="panel panel-default panel-info">
         <div class= "panel-heading">
-          <h3> Expense Form </h3>
+          <h3 class="heading text-center"> Expense Form </h3>
         </div>
         <div class="panel-body">
           <%= render 'expenses/form' %>
