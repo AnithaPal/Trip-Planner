@@ -27,10 +27,11 @@ $font-family-headings: 'Gorditas', serif;
 // Typography colors
 // Header colors
 $header-link-color: #FAEBD7;
+$dark-gray-font: #2e3439;
 
 html{
   background-position: center, center;
-  background: url(http://i.imgur.com/oc3yHdM.jpg?1) no-repeat center center fixed;
+  background: url(/assets/beach-background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -40,18 +41,21 @@ html{
 body{
   font-family: $font-family-main, sans-serif;
   line-height: normal;
-  // color: #F0FFFF;
-  color: #394147;
+  color: $dark-gray-font;
   background: transparent;
-  a{
-    color: #2e3439;
-    font-size: 2rem;
-    font-family: $font-family-headings;
-  }
+
   .heading{
     color: $header-link-color;
   }
+
+  a{
+    color: $dark-gray-font;
+    font-size: 2rem;
+    font-family: $font-family-headings;
+  }
+
 }
+
 
 .content {
   padding-top: 100px;
@@ -96,16 +100,26 @@ overflow: hidden;
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
 }
 
-.customize-panel{
+.panel{
   radius: 0px;
-  background-color: rgba(255, 255, 255, 0.9);
+  border: transparent !important;
 }
+.panel-heading{
+  background-color: #0054B4!important
+}
+.panel-body{
+  color: $dark-gray-font !important;
+  background-color: #fff !important;
+}
+
 .table th, .table td {
      border-top: none !important;
      border-style: none;
+     color: $dark-gray-font;
  }
  .table-nonfluid {
    width: auto !important;
+   margin: auto;
 }
 
 .footer-custom{
@@ -115,4 +129,28 @@ overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+//  Panel height adjustment
+.flexbox {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+.flexbox .col {
+  flex: 1;
+  border: transparent;
+}
+
+.flexbox .col:nth-child(1) {
+  background: #fff;
+  order: 0;
+}
+.flexbox .col:nth-child(2) {
+  background: #fff;
+  order: 1;
+}
+.flexbox .col:nth-child(3) {
+  background: #fff;
+  order: 2;
 }

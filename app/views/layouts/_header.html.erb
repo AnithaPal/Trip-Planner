@@ -6,7 +6,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="#" class="navbar-brand">TriPlanner</a>
+    <a href="#" class="navbar-brand heading">TriPlanner</a>
   </div>
   <div id="navbarCollapse" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
@@ -30,6 +30,7 @@
         </li>
       <% else %>
         <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %> </li>
+        <li> <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-sm' %> </li>
       <% end %>
     </ul>
   </div>

@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   def all_owned_and_joined_trips
     self.class.eager_load(:trippers).eager_load(:trips).where("trips.user_id = ? OR trippers.user_id = ?",  id, id)
   end
-
+  
   def owner?
     role == 'owner'
   end

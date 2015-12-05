@@ -6,10 +6,9 @@
       <p>
         We make your trip easy by providing a platform to plan and coordinate with your friends before and after a trip.
       </p>
-      <br><br><br>
-      <form class="col-lg-12">
+      <br><br>
         <div class="input-group">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= form_for User.new, url: user_registration_path(), class: "col-lg-12" do |f| %>
             <%= devise_error_messages! %>
             <% if @trip_id %>
               <%= hidden_field_tag :invite_token, params[:invite_token] %>
@@ -38,6 +37,7 @@
               <%= render "devise/shared/links" %>
             </div>
           <% end %>
-      </form>
     </div>
+  </div>
+  </div>
   </div>
