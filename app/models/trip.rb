@@ -35,6 +35,7 @@ class Trip < ActiveRecord::Base
 
   def all_users
     col = users.to_a
+    col << user
     col
   end
 
