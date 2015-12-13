@@ -19,7 +19,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-        <li> Hello<%= link_to current_user.name.capitalize, user_path(current_user) %> </li>
+        <li> <%= link_to current_user.name.capitalize, user_path(current_user) %> </li>
         <li class="icon-size"> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
           <span class= "glyphicon glyphicon-user"></span>
           <% end %>
@@ -29,8 +29,8 @@
           <% end %>
         </li>
       <% else %>
-        <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn btn-success btn-sm' %> </li>
-        <li> <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-sm' %> </li>
+        <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn  btn-sm' %> </li>
+        <li> <%= link_to "Sign up", new_user_registration_path, class: 'btn  btn-sm' %> </li>
       <% end %>
     </ul>
   </div>

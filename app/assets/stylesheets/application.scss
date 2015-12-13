@@ -73,28 +73,20 @@ body{
       left: 0;
       text-align: center;
       margin: auto;
+      color: $header-link-color;
   }
   .navbar-nav li a {
-   line-height: 50px;
+  //  line-height: 50px;
    color: $header-link-color;
    font-size: 2rem;
    font-family: $font-family-headings;
   }
 
   .navbar-right  li a{
-    margin-right: 15px;
+    margin: 15px;
     padding-right: 10px;
   }
 }
-
-.glyphicons {
-padding-left: 0;
-padding-bottom: 1px;
-margin-bottom: 20px;
-list-style: none;
-overflow: hidden;
-}
-
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
@@ -121,7 +113,7 @@ overflow: hidden;
    width: auto !important;
    margin: auto;
 }
- 
+
 .footer-custom{
   background: transparent;
   height: 60px;
