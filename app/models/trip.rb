@@ -22,7 +22,7 @@ class Trip < ActiveRecord::Base
   def expense_per_person
     user_amt = user_count
     if user_amt > 0
-      expenses.sum(:amount_spent) / user_amt
+      (expenses.sum(:amount_spent).to_f / user_amt).round(2)
     else
       expenses.sum(:amount_spent)
     end
@@ -48,9 +48,9 @@ class Trip < ActiveRecord::Base
 
       if diff > 0
         result << Reconciliation.new("unsure", user.name, diff.abs)
-        hsh[:givers] << [user.name, diff.abs]
+        hsh[:givers] << [user.name, diff.abs.round(2)]
       else
-        hsh[:receivers] << [user.name, diff.abs]
+        hsh[:receivers] << [user.name, diff.abs.round(2)]
       end
     end
 
@@ -70,7 +70,7 @@ class Trip < ActiveRecord::Base
       receiver, over = amts_over[ri - 1]
       giver, owed = amts_owed[gi - 1]
 
-      diff = over - owed
+      diff = (over - owed).round(2)
       if diff > 0
         result << Reconciliation.new(receiver, giver, owed)
         amts_over << [receiver, diff]
