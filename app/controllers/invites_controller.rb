@@ -42,7 +42,7 @@ class InvitesController < ApplicationController
 
   def accept
     @invite = Invite.find(params[:id])
-
+    authorize @invite
     if @invite.accepted
       flash[:notice] = "You are in this trip. Have fun planning"
       redirect_to @invite.trip
