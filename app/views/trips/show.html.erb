@@ -16,12 +16,14 @@
           <%= render partial: "invites/form", locals: { invite: @invite } if @trip.user == current_user %>
           <table class="table table-borderless">
             <h3 class="text-center"> Trippers </h3>
-            <% @trip.trippers.each do |tripper| %>
-              <tr>
-                <td>
-                  <strong> <%= tripper.user.name %> </strong>
-                </td>
-              </tr>
+            <% if @trip.trippers.any? %>
+              <% @trip.trippers.each do |tripper| %>
+                <tr>
+                  <td>
+                    <strong> <%= tripper.user.name %> </strong>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
           </table>
       </div>
