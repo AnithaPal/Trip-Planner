@@ -36,6 +36,7 @@ TriPlanner makes decision making simpler by allowing trippers to vote for each q
 ### Share Expense
 **Let's keep track**     
 TriPlanner lets each tripper keep track of their expenses categorically.
+
 ![Invite friends](app/assets/images/expense_form.png)
 
 ### Share Per Person
