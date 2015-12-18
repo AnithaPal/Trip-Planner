@@ -20,7 +20,7 @@
               <% @trip.trippers.each do |tripper| %>
                 <tr>
                   <td>
-                    <strong> <%= tripper.user.name %> </strong>
+                    <strong> <%= tripper.user.name.capitalize %> </strong>
                   </td>
                 </tr>
               <% end %>
