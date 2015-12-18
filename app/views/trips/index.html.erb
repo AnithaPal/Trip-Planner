@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="text-center">My Trips</h1>
-      <h4 class="text-center"> <%= link_to "Add trip", new_trip_path %> </h4>
+      <h1 class="text-center heading">My Trips</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default panel-info">
-        <div class="panel-heading text-center"> Trips I created </div>
+  <div class="row flexbox">
+    <div class=" col">
+      <div class="panel panel-default panel-info customize-panel">
+        <div class="panel-heading text-center heading"> <h3 class="heading"> Trips I created  </h3> </div>
           <div class="panel-body text-justify">
             <table class="table table-borderless table-nonfluid">
               <% @trips.each do |trip| %>
@@ -26,9 +25,9 @@
           </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col">
       <div class="panel panel-default panel-info">
-        <div class="panel-heading text-center"> Trips Invited to</div>
+        <div class="panel-heading text-center heading"> <h3 class="heading">  Trips Invited to </h3> </div>
           <div class="panel-body text-justify ">
             <table class="table table-borderless table-nonfluid">
              <% @trips_invited_to.each do |trip| %>

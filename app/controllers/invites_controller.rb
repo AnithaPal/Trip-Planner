@@ -12,10 +12,10 @@ class InvitesController < ApplicationController
     elsif @invite.save
       if @user.present?
         @invite.recipient.id = @user.id
-        InviteMailer.invite_existing_user(@invite, @trip).deliver
+        InviteMailer.invite_existing_user(@invite, @trip).deliver_now
         flash[:notice] = "An email invite was sent to #{@user.email}"
       else
-        InviteMailer.invite_new_user(@invite, @trip).deliver
+        InviteMailer.invite_new_user(@invite, @trip).deliver_now
         flash[:notice] = "Trip invitaion has successfully sent to #{@invite.email}."
       end
     else
@@ -42,7 +42,7 @@ class InvitesController < ApplicationController
 
   def accept
     @invite = Invite.find(params[:id])
-
+    authorize @invite
     if @invite.accepted
       flash[:notice] = "You are in this trip. Have fun planning"
       redirect_to @invite.trip

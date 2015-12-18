@@ -40,6 +40,7 @@ end
 gem 'pry-rails', :group => :development
 
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'

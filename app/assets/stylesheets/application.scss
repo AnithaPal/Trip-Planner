@@ -14,21 +14,135 @@
  *= require_tree .
  *= require_self
  */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Lora:400,700,400italic);
+
+// Typography
+$font-family-main: 'Lora', serif;
+$font-family-headings: 'Gorditas', serif;
+
+// Typography colors
+// Header colors
+$header-link-color: #FAEBD7;
+$dark-gray-font: #2e3439;
+
+html{
+  background-position: center, center;
+  background: url(/assets/beach-background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body{
+  font-family: $font-family-main, sans-serif;
+  line-height: normal;
+  color: $dark-gray-font;
+  background: transparent;
+
+  .heading{
+    color: $header-link-color;
+  }
+
+  a{
+    color: $dark-gray-font;
+    font-size: 2rem;
+    font-family: $font-family-headings;
+  }
+
+}
+
 
 .content {
   padding-top: 100px;
+  margin-top: 20px;
+}
+.navbar-custom{
+  height: 100px;
+  padding:10px;
+  background: transparent;
+  border: transparent;
+  .navbar-brand
+  {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      color: $header-link-color;
+  }
+  .navbar-nav li a {
+  //  line-height: 50px;
+   color: $header-link-color;
+   font-size: 2rem;
+   font-family: $font-family-headings;
+  }
+
+  .navbar-right  li a{
+    margin: 15px;
+    padding-right: 10px;
+  }
 }
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
 }
 
+.panel{
+  radius: 0px;
+  border: transparent !important;
+}
+.panel-heading{
+  background-color: #0054B4!important
+}
+.panel-body{
+  color: $dark-gray-font !important;
+  background-color: #fff !important;
+}
+
 .table th, .table td {
      border-top: none !important;
      border-style: none;
+     color: $dark-gray-font;
  }
  .table-nonfluid {
    width: auto !important;
+   margin: auto;
+}
+
+.footer-custom{
+  background: transparent;
+  height: 60px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//  Panel height adjustment
+.flexbox {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+.flexbox .col {
+  flex: 1;
+  border: transparent;
+}
+
+.flexbox .col:nth-child(1) {
+  background: #fff;
+  order: 0;
+}
+.flexbox .col:nth-child(2) {
+  background: #fff;
+  order: 1;
+}
+.flexbox .col:nth-child(3) {
+  background: #fff;
+  order: 2;
 }

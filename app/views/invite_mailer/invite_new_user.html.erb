@@ -16,8 +16,8 @@
       </div>
       <div class="panel-body">
         <div class="btn-group">
-          <button> <%= link_to "Yes", new_user_registration_url(invite_token: @invite.token) %> </button>
-          <button> <%= link_to "No!", decline_invite_url(@invite) %> </button>
+          <%= link_to "Yes", new_user_registration_url(invite_token: @invite.token), method: :get %>
+          <%= link_to "No!", decline_invite_url(@invite), method: :get %>
        </div>
       </div>
     </div>

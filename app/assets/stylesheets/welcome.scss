@@ -1,3 +1,37 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(https://www.google.com/fonts#UsePlace:use/Collection:Gorditas:700);
+
+h1{
+  font-size: 40px;
+  font-family: 'Gorditas', cursive;
+  font-weight: bold;
+}
+.main-heading{
+  font-family: 'Gorditas', cursive;
+  color: #00FFFF;
+  font-size: 6rem;
+}
+.lead{
+  color: #7FFFD4;
+  font-size: 4rem;
+}
+p{
+  font-family: 'Gorditas', cursive;
+  color: #F0FFFF;
+  font-size: 2.5rem;
+}
+.about-paragraph{
+  font-size: 2rem;
+}
+
+.input-group{
+  width: 340px;
+  text-align: center;
+  margin:0 auto;
+  .custom-form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
