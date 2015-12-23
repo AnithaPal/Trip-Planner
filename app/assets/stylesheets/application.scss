@@ -31,7 +31,7 @@ $dark-gray-font: #2e3439;
 
 html{
   background-position: center, center;
-  background: url(/assets/beach-background.jpg) no-repeat center center fixed;
+  // background: url(/assets/beach-background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -42,7 +42,7 @@ body{
   font-family: $font-family-main, sans-serif;
   line-height: normal;
   color: $dark-gray-font;
-  background: transparent;
+  background: #0e64c0;
 
   .heading{
     color: $header-link-color;
@@ -64,7 +64,12 @@ body{
 .navbar-custom{
   height: 100px;
   padding:10px;
-  background: transparent;
+  // background: transparent;
+  background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   border: transparent;
   .navbar-brand
   {
@@ -73,7 +78,6 @@ body{
       left: 0;
       text-align: center;
       margin: auto;
-      color: $header-link-color;
   }
   .navbar-nav li a {
   //  line-height: 50px;
@@ -114,13 +118,17 @@ body{
    margin: auto;
 }
 
-.footer-custom{
-  background: transparent;
-  height: 60px;
-  vertical-align: middle;
+
+// To align footer content in the middle
+.custom-footer{
   display: flex;
-  justify-content: center;
   align-items: center;
+  background-image: url(footer.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 110px;
+  border: transparent !important;
 }
 //  Panel height adjustment
 .flexbox {
