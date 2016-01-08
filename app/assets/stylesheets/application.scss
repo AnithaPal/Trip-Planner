@@ -18,7 +18,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import url(https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Lora:400,700,400italic);
+
 
 // Typography
 $font-family-main: 'Lora', serif;
@@ -42,7 +44,9 @@ body{
   font-family: $font-family-main, sans-serif;
   line-height: normal;
   color: $dark-gray-font;
-  background: #0e64c0;
+  // background: #0e64c0;
+  background: #0075BA;
+
 
   .heading{
     color: $header-link-color;
@@ -56,41 +60,41 @@ body{
 
 }
 
-
 .content {
   padding-top: 100px;
   margin-top: 20px;
 }
-.navbar-custom{
-  height: 100px;
-  padding:10px;
-  // background: transparent;
-  background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  border: transparent;
-  .navbar-brand
-  {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      text-align: center;
-      margin: auto;
-  }
-  .navbar-nav li a {
-  //  line-height: 50px;
-   color: $header-link-color;
-   font-size: 2rem;
-   font-family: $font-family-headings;
-  }
-
-  .navbar-right  li a{
-    margin: 15px;
-    padding-right: 10px;
-  }
-}
+// .navbar-custom{
+//   height: 100px;
+//   padding:10px;
+//   background: transparent;
+//   background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+//   border: transparent;
+//   .navbar-brand
+//   {
+//       position: absolute;
+//       height: 70%;
+//       width: 70%;
+//       left: 0;
+//       text-align: center;
+//       margin: auto;
+//   }
+//   .navbar-nav li a {
+//   //  line-height: 50px;
+//    color: $header-link-color;
+//    font-size: 2rem;
+//    font-family: $font-family-headings;
+//   }
+//
+//   .navbar-right  li a{
+//     margin: 15px;
+//     padding-right: 10px;
+//   }
+// }
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
@@ -127,7 +131,7 @@ body{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 110px;
+  height: 135px;
   border: transparent !important;
 }
 //  Panel height adjustment
@@ -153,4 +157,40 @@ body{
 .flexbox .col:nth-child(3) {
   background: #fff;
   order: 2;
+}
+//-------------------------------------------------------------------------------------------------------
+.navbar-custom{
+  margin-bottom: 0px;
+  padding: 20px, 25px;
+  background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
+  border: transparent;
+  height: 100px;
+  .navbar-header{
+    padding-top: 20px;
+    .logo_img{
+     width: 70%;
+     height: 70%
+     }
+  }
+
+  .navbar-nav{
+    padding-top: 20px;
+    li a{
+      color: $header-link-color;
+      font-size: 2rem;
+      font-family: $font-family-headings;
+    }
+  }
+
+  .navbar-right  li {
+    margin-right: 5px;
+    padding-right: 10px;
+      .blue{
+        color: #0068c1;
+      }
+
+      .orange{
+        color: #ff6600;
+      }
+  }
 }

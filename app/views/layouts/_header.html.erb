@@ -1,40 +1,40 @@
-<nav role="navigation" class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-custom" role="navigation">
-  <div class="navbar-header">
-    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+<nav class="navbar navbar-inverse navbar-fixed navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		  <a class="logo_img"><%= link_to image_tag("TripIt-logo.png"), root_path %></a>
+		</div>
 
-    <div class="navbar-brand" >
-        <%= link_to image_tag("TripIt-logo.png"), root_path %>
-    </div>
-  </div>
-  <div id="navbarCollapse" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li class="nav-hover"> <%= link_to "Home", root_path %> </li>
-      <li class="nav-hover"> <%= link_to "About", about_path %> </li>
-      <% if current_user %>
-        <li> <%= link_to "My Trip", trips_path %> </li>
-        <li> <%= link_to "New trip", new_trip_path %> </li>
-      <% end %>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-        <li> <%= link_to current_user.name.capitalize, user_path(current_user) %> </li>
-        <li class="icon-size"> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm' do %>
-          <span class= "glyphicon glyphicon-user"></span>
-          <% end %>
-        </li>
-        <li class="icon-size"> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-sm' do %>
-          <span class="glyphicon glyphicon-log-out" ></span>
-          <% end %>
-        </li>
-      <% else %>
-        <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn  btn-sm' %> </li>
-        <li> <%= link_to "Sign up", new_user_registration_path, class: 'btn  btn-sm' %> </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+    <div class="collapse navbar-collapse nav-al" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="nav-hover"> <%= link_to "Home", root_path %> </li>
+        <li class="nav-hover"> <%= link_to "About", about_path %> </li>
+        <% if current_user %>
+          <li> <%= link_to "My Trip", trips_path %> </li>
+          <li> <%= link_to "New trip", new_trip_path %> </li>
+        <% end %>
+      </ul>
+			<ul class="nav navbar-nav navbar-right">
+			     <% if current_user %>
+            <li> <%= link_to current_user.name.capitalize, user_path(current_user) %> </li>
+        		<li> <%= link_to edit_user_registration_path, class: 'btn btn-info btn-sm btn-custom' do %>
+          		<span class= "glyphicon glyphicon-user blue"></span>
+          		<% end %>
+        		</li>
+        		<li> <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-warning btn-custom-orange' do %>
+          	   <span class="glyphicon glyphicon-log-out orange" ></span>
+          	    <% end %>
+        		</li>
+      		<% else %>
+            <li> <%= link_to "Sign in", new_user_session_path, class: 'sign btn  btn-sm' %> </li>
+        		<li> <%= link_to "Sign up", new_user_registration_path, class: 'btn  btn-sm' %> </li>
+      		<% end %>
+        </ul>
+			</div>
+		</div>
+	</nav>
