@@ -3,10 +3,20 @@
 
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <div class="panel panel-default panel-info">
+    <div class="col-md-3">
+      <div class="panel panel-default panel-info custom-panel">
         <div class= "panel-heading">
-          <h1 class="text-center heading"> Trip Expense </h1>
+          <h3 class="heading text-center"> Expense Form </h3>
+        </div>
+        <div class="panel-body">
+          <%= render 'expenses/form' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default panel-info custom-panel">
+        <div class= "panel-heading">
+          <h2 class="text-center heading"> Trip Expense </h2>
           <table class="table" id= "white-color">
             <thead>
               <tr>
@@ -47,34 +57,29 @@
           </table>
         </div>
       </div>
-      <div class="col-md-4">
-        <table class="table table-borderless table-striped">
-          <thead>
-            <tr>
-              <td> <strong>  Giver </strong> </td>
-              <td> <strong> Receiver </strong> </td>
-              <td> <strong> Amount </strong> </td>
-            </tr>
-          </thead>
-          <tbody>
-            <% @trip.reconciliations.each do |recon| %>
-              <tr>
-                <td> <%= recon.giver %> </td>
-                <td> <%= recon.receiver %> </td>
-                <td> <%= recon.amount %> </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default panel-info">
-        <div class= "panel-heading">
-          <h3 class="heading text-center"> Expense Form </h3>
-        </div>
-        <div class="panel-body">
-          <%= render 'expenses/form' %>
+    <div class="col-sm-3">
+      <div class="ppanel panel-default panel-info custom-panel">
+        <div class="panel-heading"> <h3 class="text-center heading"> Individual Transction </h3> </div>
+         <div class="panel-body">
+           <table class="table table-borderless table-striped">
+            <thead>
+              <tr>
+                <td> <strong>  Giver </strong> </td>
+                <td> <strong> Receiver </strong> </td>
+                <td> <strong> Amount </strong> </td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @trip.reconciliations.each do |recon| %>
+                <tr>
+                  <td> <%= recon.giver %> </td>
+                  <td> <%= recon.receiver %> </td>
+                  <td> <%= recon.amount %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
