@@ -8,11 +8,11 @@
   <h1 class="text-center heading"> <%= link_to @trip.name.capitalize, edit_trip_path(@trip) %></h1>
 
   <!-- Panels -->
-  <div class="row-fluid flexbox">
+  <div class=" row row-fluid flexbox">
 
     <!-- Left Panel - Invited Friends -->
-    <div class="col">
-      <div class="panel panel-default panel-info">
+    <div class="col-md-4 custom-col">
+      <div class="panel panel-default panel-info custom-panel">
         <div class="panel-heading text-center">
           <h3 class="heading"> Invited Friends </h3>
         </div>
@@ -33,10 +33,11 @@
           </table>
       </div>
     </div>
+  </div>
 
     <!-- Middle Panel - Polls -->
-    <div class="col">
-      <div class="panel panel-default">
+    <div class="col-md-4 custom-col">
+      <div class="panel panel-default custom-panel">
         <div class="panel-heading text-center">
           <h3 class="heading" id="make-even"> <%= link_to "Add a Poll", new_trip_poll_path(@trip) %></h3>
         </div>
@@ -51,8 +52,8 @@
     </div>
 
     <!-- Right Panel - RSVP Status -->
-    <div class="col">
-      <div class="panel panel-default panel-info">
+    <div class="col-md-4 custom-col">
+      <div class="panel panel-default panel-info custom-panel">
         <div class="panel-heading text-center">
           <h3 class="heading"> RSVP Status</h3>
         </div>
@@ -81,7 +82,7 @@
         </div>
       </div>
     </div>
-
+    <!-- End of columns   -->
   </div>
 
 </div>
