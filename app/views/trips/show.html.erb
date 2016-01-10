@@ -41,7 +41,7 @@
         <div class="panel-heading text-center">
           <h3> <%= link_to "Add a Poll", new_trip_poll_path(@trip) %></h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body text-center">
           <% @trip.polls.each do |poll| %>
             <h4> <%= link_to "#{poll.topic.capitalize}", trip_poll_path(poll.trip, poll) %>
               <small>(voted: <%= poll.votes_summary %>)</small>

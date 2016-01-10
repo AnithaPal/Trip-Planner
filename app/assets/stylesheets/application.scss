@@ -41,14 +41,14 @@ body{
   color: $dark-gray-font;
   background: $page-background;
 
-  .heading{
-    color: $header-link-color;
-  }
-
   a{
     color: $dark-gray-font;
     font-size: 2rem;
     font-family: $font-family-headings;
+  }
+
+  .heading{
+    color: $header-link-color;
   }
 
 }
