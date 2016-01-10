@@ -30,24 +30,16 @@ $font-family-headings: 'Gorditas', serif;
 // Header colors
 $header-link-color: #FAEBD7;
 $dark-gray-font: #2e3439;
+$page-background: #0074cf;
+$panel-background: #fff;
+$panel-heading-background: #f8eabf ;
 
-html{
-  background-position: center, center;
-  // background: url(/assets/beach-background.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
 body{
   font-family: $font-family-main, sans-serif;
   line-height: normal;
   color: $dark-gray-font;
-  // background: #0e64c0;
-  // background: #0075BA;
-  background: #0074cf;
-
+  background: $page-background;
 
   .heading{
     color: $header-link-color;
@@ -61,26 +53,12 @@ body{
 
 }
 
-// .content {
-//   padding-top: 100px;
-//   margin-top: 20px;
-// }
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
 }
 
-.panel{
-  radius: 0px;
-  border: transparent !important;
-}
-.panel-heading{
-  background-color: #0054B4!important
-}
-.panel-body{
-  color: $dark-gray-font !important;
-  background-color: #fff !important;
-}
+
 
 .table th, .table td {
      border-top: none !important;
@@ -104,30 +82,7 @@ body{
   height: 190px;
   border: transparent !important;
 }
-//  Panel height adjustment
-.flexbox {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-}
-.flexbox .col {
-  flex: 1;
-  border: transparent;
-}
 
-.flexbox .col:nth-child(1) {
-  background: #fff;
-  order: 0;
-}
-.flexbox .col:nth-child(2) {
-  background: #fff;
-  order: 1;
-}
-.flexbox .col:nth-child(3) {
-  background: #fff;
-  order: 2;
-}
 //---------------------------------Nav Bar ----------------------------------------------------------------------
 .navbar-custom{
   margin-bottom: 0px;
@@ -167,9 +122,19 @@ body{
 
 //---------------------------------  Column Height ----------------------------------------------------------------------
 .custom-panel{
+
   border-radius: 5px;
   background-color: white;
   height: 500px;
   overflow: scroll;
+  border: transparent !important;
+  .panel-heading {
+    background-color: $panel-heading-background!important;
+    color: $dark-gray-font;
+  }
 
+  .panel-body{
+    color: $dark-gray-font !important;
+    background-color: $panel-background !important;
+  }
 }

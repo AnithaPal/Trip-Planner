@@ -1,44 +1,43 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2 col-xs-4">
     <h1 class="text-center heading">My Trips</h1>
   </div>
 </div>
-  <div class="row">
-      <div class="col-sm-5 col-sm-offset-1">
-        <div class="panel panel-default panel-info custom-panel">
-          <div class="panel-heading text-center heading"> <h3 class="heading"> Trips I created  </h3> </div>
-            <div class="panel-body text-justify">
-              <table class="table table-borderless table-nonfluid">
-                <% @trips.each do |trip| %>
-                  <tr>
-                    <td> <%= link_to trip.name.capitalize, trip%> </td>
-                    <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
-                          <span class="glyphicon glyphicon-usd"></span>&nbsp;
-                         <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-              </table>
-            </div>
+<div class="row">
+  <div class="col-md-6 .col-xs-6">
+    <div class="panel panel-default panel-info custom-panel">
+      <div class="panel-heading text-center"> <h3> Trips I created  </h3> </div>
+        <div class="panel-body text-justify">
+          <table class="table table-borderless table-nonfluid">
+            <% @trips.each do |trip| %>
+              <tr>
+                <td> <%= link_to trip.name.capitalize, trip%> </td>
+                <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
+                      <span class="glyphicon glyphicon-usd"></span>&nbsp;
+                     <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
         </div>
-      </div>
-      <div class="col-sm-5 col-sm-offset-1">
-        <div class="panel panel-default panel-info custom-panel">
-          <div class="panel-heading text-center heading"> <h3 class="heading">  Trips Invited to </h3> </div>
-            <div class="panel-body text-justify ">
-              <table class="table table-borderless table-nonfluid">
-               <% @trips_invited_to.each do |trip| %>
-                <tr>
-                  <td> <%= link_to trip.name.capitalize, trip %> </td>
-                  <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
-                        <span class="glyphicon glyphicon-usd"></span>&nbsp;
-                       <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        </div>
+    </div>
+  </div>
+  <div class="col-md-6 .col-xs-6">
+    <div class="panel panel-default panel-info custom-panel">
+      <div class="panel-heading text-center"> <h3>  Trips Invited to </h3> </div>
+        <div class="panel-body text-justify ">
+          <table class="table table-borderless table-nonfluid">
+           <% @trips_invited_to.each do |trip| %>
+            <tr>
+              <td> <%= link_to trip.name.capitalize, trip %> </td>
+              <td> <%= link_to trip_expenses_path(trip), class: 'btn'  do %>
+                    <span class="glyphicon glyphicon-usd"></span>&nbsp;
+                   <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
       </div>
     </div>
+  </div>
 </div>
