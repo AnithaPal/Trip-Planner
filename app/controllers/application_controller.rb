@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError do |exception|
-    redirect_to new_user_session_path_url, alert: "You are not authorized to do this action"
+    redirect_to new_user_session_url, alert: "You are not authorized to do this action"
   end
 
   protected
