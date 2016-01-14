@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 ">
       <div class="media text-center">
         <div class="media-body">
-          <h2 class="media-heading text-center"> <%= @user.name.capitalize %> </h2>
+          <h2 class="media-heading text-center heading"> <%= @user.name.capitalize %> </h2>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
     <div class="tabbable tabs-left">
       <ul class="nav nav-tabs">
          <li class="active"> <a href="#polls" data-toggle="tab"> Polls </a> </li>
@@ -16,9 +17,9 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="polls">
-        <h3 class="text-center">Participation in polls</h3>
+        <h3 class="text-center heading">Participation in polls</h3>
         <% @user.poll_options.each do |option| %>
-          <div class="panel panel-default panel-info">
+          <div class="panel panel-default panel-info custom-panel">
             <div class="panel-heading text-center"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %>
             </div>
             <div class="panel-body">
@@ -28,11 +29,12 @@
         <% end %>
       </div>
 
+
         <div class="tab-pane" id="trips">
-          <h3 class="text-center"> Trips </h3> </br>
+          <h3 class="text-center heading"> Trips </h3> </br>
           <% @user.trips.each do |trip| %>
             <div class= "row">
-              <div class="panel panel-default panel-info col-md-8 col-md-offset-2">
+              <div class="panel panel-default panel-info custom-panel">
                <div class="panel-heading text-center"> <%= link_to trip.name, trip_path(trip) %> </div>
                 <div class="panel-body">
                   <table class="table table-borderless table-nonfluid">
@@ -56,5 +58,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
