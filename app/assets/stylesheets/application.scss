@@ -40,6 +40,19 @@ body{
   line-height: normal;
   color: $dark-gray-font;
   background: $page-background;
+  margin: 0;
+  overflow: hidden;
+  height:100%;
+
+  #wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -190px;
+  /* Pad bottom by footer height */
+  padding: 0 0 190px;
+}
 
   a{
     color: $dark-gray-font;
@@ -91,7 +104,8 @@ body{
   .custom-panel{
     border-radius: 5px;
     background-color: white;
-    overflow: scroll;
+    max-height: 500px;
+    overflow-y:scroll;
     border: transparent !important;
     .panel-heading {
       background-color: $panel-heading-background!important;
@@ -126,12 +140,8 @@ body{
      border-style: none;
      color: $dark-gray-font;
  }
- .table-nonfluid {
-   width: auto !important;
-   margin: auto;
-}
 
-//  To make equal size columns    
+//  To make equal size columns
 .row-flex, .row-flex > div[class*='col-'] {
     display: -webkit-box;
     display: -moz-box;
@@ -168,3 +178,4 @@ body{
     -webkit-flex: 2;
     flex: 2;
 }
+// --------------------------
