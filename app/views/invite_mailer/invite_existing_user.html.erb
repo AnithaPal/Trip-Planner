@@ -15,9 +15,8 @@
       </div>
       <div class="panel-body">
         <div class="btn-group">
-           <%= button_to "Yes", accept_invite_url(@invite), method: :get %> 
-          <button> <%= link_to "No!", decline_invite_url(@invite) %> </button>
-          <button> <%= link_to "More details!!!", trip_url(@trip) %> </button>
+          <%= link_to "Yes", accept_invite_url(@invite), method: :get %>
+          <%= link_to "No!", decline_invite_url(@invite) %>
        </div>
       </div>
     </div>
