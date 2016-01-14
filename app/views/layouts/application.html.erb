@@ -9,31 +9,33 @@
   </head>
   <body>
     <header>
-      <%= render 'layouts/header' %>
-      <div class="row ">
-        <div class="col-sm-4 col-sm-offset-2">
-          <% if flash[:notice] %>
-            <div class="alert alert-success">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <%= flash[:notice] %>
+        <div id="wrap">
+          <%= render 'layouts/header' %>
+          <div class="row ">
+            <div class="col-sm-4 col-sm-offset-2">
+              <% if flash[:notice] %>
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <%= flash[:notice] %>
+                </div>
+              <% elsif flash[:error] %>
+                <div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <%= flash[:error] %>
+                </div>
+              <% elsif flash[:alert] %>
+                <div class="alert alert-warning">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <%= flash[:alert] %>
+                </div>
+              <% end %>
             </div>
-          <% elsif flash[:error] %>
-            <div class="alert alert-danger">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <%= flash[:error] %>
-            </div>
-          <% elsif flash[:alert] %>
-            <div class="alert alert-warning">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <%= flash[:alert] %>
-            </div>
-          <% end %>
+          </div>
+        </header>
+        <div class="container-fluid">
+          <%= yield %>
         </div>
-      </div>
-    </header>
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
+    </div>  
       <%= render 'layouts/footer' %>
   </body>
 </html>
