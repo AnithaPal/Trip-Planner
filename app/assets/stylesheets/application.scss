@@ -158,8 +158,8 @@ body{
 
 .row-flex-wrap {
 	-webkit-flex-flow: row wrap;
-    align-content: flex-start;
-    flex:0;
+  align-content: flex-start;
+  flex:0;
 }
 
 .row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
@@ -172,15 +172,25 @@ body{
 
 
 .flex-col {
-    display: flex;
-    display: -webkit-flex;
-    flex: 1 100%;
+  display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  flex: 1 100%;
 	flex-flow: column nowrap;
 }
 
 .flex-grow {
 	display: flex;
-    -webkit-flex: 2;
-    flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
 }
 // --------------------------
+
+.flex-two-column{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
