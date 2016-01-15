@@ -1,11 +1,11 @@
 class Trip < ActiveRecord::Base
   belongs_to :user
 
-  has_many :polls
+  has_many :polls, dependent: :destroy
   has_many :trippers, dependent: :destroy
   has_many :users, through: :trippers
-  has_many :expenses
-  has_many :invites
+  has_many :expenses, dependent: :destroy
+  has_many :invites, dependent: :destroy
 
   default_scope { order('trips.created_at DESC') }
 
@@ -21,7 +21,7 @@ class Trip < ActiveRecord::Base
 
   def expense_per_person
     user_amt = user_count
-    
+
     if user_amt > 0
       (expenses.sum(:amount_spent).to_f / user_amt).round(2)
     else
