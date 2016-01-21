@@ -1,63 +1,63 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2 ">
-      <div class="media text-center">
-        <div class="media-body">
-          <h2 class="media-heading text-center heading"> <%= @user.name.capitalize %> </h2>
-        </div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 ">
+    <div class="media text-center">
+      <div class="media-body">
+        <h2 class="media-heading text-center heading"> <%= @user.name.capitalize %> </h2>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2 col-xs-12">
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs">
-         <li class="active"> <a href="#polls" data-toggle="tab"> Polls </a> </li>
-         <li> <a href="#trips" data-toggle="tab"> Trips </a> </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="polls">
-        <h3 class="text-center heading">Participation in polls</h3>
-        <% @user.poll_options.each do |option| %>
-          <div class="panel panel-default panel-info custom-panel">
-            <div class="panel-heading text-center"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %>
-            </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-xs-12">
+   <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"> <a href="#polls" data-toggle="tab"> Polls </a> </li>
+      <li> <a href="#trips" data-toggle="tab"> Trips </a> </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="polls">
+       <h3 class="text-center heading">Participation in polls</h3>
+        <div class ="scrollable-tab">
+         <% @user.poll_options.each do |option| %>
+           <div class="panel panel-default panel-info custom-panel">
+             <div class="panel-heading text-center"><%= link_to option.poll.topic, trip_poll_path(option.poll.trip, option.poll) %>
+           </div>
             <div class="panel-body">
               <%= option.title %>
             </div>
           </div>
         <% end %>
       </div>
+    </div>
 
 
-        <div class="tab-pane" id="trips">
-          <h3 class="text-center heading"> Trips </h3> </br>
+      <div class="tab-pane" id="trips">
+        <h3 class="text-center heading"> Trips </h3> </br>
+        <div class ="scrollable-tab">
           <% @user.trips.each do |trip| %>
-            <div class= "row">
-              <div class="panel panel-default panel-info custom-panel">
-               <div class="panel-heading text-center"> <%= link_to trip.name, trip_path(trip) %> </div>
-                <div class="panel-body">
-                  <table class="table table-borderless table-nonfluid">
-                    <% trip.trippers.each do |tripper| %>
-                      <tr>
-                        <td>
-                          <%= link_to tripper_path(tripper.id), method: :delete, class: 'btn', data: {confirm: 'Are you sure, you want to remove this tripper from your trip?'} do %>
-                          <i class='glyphicon glyphicon-remove-circle'> </i>
+            <div class="panel panel-default panel-info custom-panel">
+             <div class="panel-heading text-center"> <%= link_to trip.name, trip_path(trip) %> </div>
+              <div class="panel-body">
+                <table class="table table-borderless table-nonfluid">
+                  <% trip.trippers.each do |tripper| %>
+                    <tr>
+                      <td>
+                        <%= link_to tripper_path(tripper.id), method: :delete, class: 'btn', data: {confirm: 'Are you sure, you want to remove this tripper from your trip?'} do %>
+                        <i class='glyphicon glyphicon-remove-circle'> </i>
                         <% end %>
-                        </td>
-                        <td>
-                          <strong> <%= tripper.user.name %> </strong>
-                        </td>
+                      </td>
+                      <td>
+                        <strong> <%= tripper.user.name %> </strong>
+                      </td>
                       </tr>
-                    <% end %>
-                  </table>
-                </div>
+                  <% end %>
+                </table>
               </div>
             </div>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
+   </div>
   </div>
 </div>

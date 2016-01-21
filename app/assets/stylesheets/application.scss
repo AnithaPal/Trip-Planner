@@ -203,3 +203,8 @@ body{
   flex: 2;
 }
 // --------------------------
+.scrollable-tab{
+min-height: 200px;
+max-height: 500px;
+overflow-y:scroll;
+}
