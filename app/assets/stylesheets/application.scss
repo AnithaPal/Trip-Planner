@@ -62,6 +62,9 @@ body{
 
   .heading{
     color: $header-link-color;
+    a{
+      color: $header-link-color;
+    }
   }
 
   .navbar-custom{
@@ -104,7 +107,8 @@ body{
   .custom-panel{
     border-radius: 5px;
     background-color: white;
-    max-height: 500px;
+    min-height: 200px;
+    max-height: 400px;
     overflow-y:scroll;
     border: transparent !important;
     .panel-heading {
@@ -119,15 +123,27 @@ body{
   }
 
   .custom-footer{
-    display: flex;
-    align-items: center;
     background-image: url(footer.jpg);
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: cover;
-    height: 190px;
+    height: 200px;
     border: transparent !important;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: -1;
+    .footer-content{
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+      padding-bottom: 5px;
+    }
   }
+
 
 }
 
@@ -187,10 +203,3 @@ body{
   flex: 2;
 }
 // --------------------------
-
-.flex-two-column{
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-}
