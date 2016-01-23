@@ -1,32 +1,28 @@
-<div class="container">
-  <div class= "row col-md-2 pull-left">
+<div class= "row col-md-2 pull-left">
     <%= link_to trip_path(@trip), class: 'btn btn-primary' do  %>
-      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp; 
-    <% end %>
-  </div>
-  <br />
-  <div class="row ">
-    <div class="col-md-8">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h2><%= @poll.topic.capitalize %> 
-            <small>
-              <%= link_to edit_trip_poll_path(@trip, @poll), class: 'btn btn-default btn-xs'  do %>
-                <i class="glyphicon glyphicon-pencil"> </i>&nbsp; 
-              <% end %>
-              <%= link_to  trip_poll_path(@trip, @poll),method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} do %>
-                <i class="glyphicon glyphicon-trash"> </i>&nbsp;
-              <% end %> 
-            </small>
-          </h2>
-        </div>
-        <div class="panel-body">
-          <%= render 'voting_form' %>
-       </div>
-       
+      <i class="glyphicon glyphicon-arrow-left"> </i>&nbsp;
+      <% end %>
+</div>
+<br />
+<div class="row ">
+  <div class="col-md-8  col-xs-12">
+    <div class="panel panel-success custom-panel">
+      <div class="panel-heading">
+        <h2><%= @poll.topic.capitalize %>
+          <small>
+            <%= link_to edit_trip_poll_path(@trip, @poll), class: 'btn btn-default btn-xs'  do %>
+              <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
+            <% end %>
+            <%= link_to  trip_poll_path(@trip, @poll),method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} do %>
+              <i class="glyphicon glyphicon-trash"> </i>&nbsp;
+            <% end %>
+          </small>
+        </h2>
       </div>
+      <div class="panel-body">
+        <%= render 'voting_form' %>
+     </div>
+
     </div>
-  </div>  
-    <div class="col-md-2">
-    </div>
+  </div>
 </div>

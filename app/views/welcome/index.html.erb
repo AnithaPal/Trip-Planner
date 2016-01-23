@@ -1,14 +1,12 @@
-<div class="container-full">
-  <div class="row">
-    <div class="col-lg-12 text-center v-center">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-6 text-center">
       <h1 class="main-heading"> Built For Trippers </h1>
       <p class="lead"> Plan a trip with your friends </p>
       <p>
         We make your trip easy by providing a platform to plan and coordinate with your friends before and after a trip.
       </p>
-      <br><br>
-        <div class="input-group">
-          <%= form_for User.new, url: user_registration_path(), class: "col-lg-12" do |f| %>
+        <div class="input-group form form-horizontal">
+          <%= form_for User.new, url: user_registration_path(), class: "col-md-8 col-xs-6" do |f| %>
             <%= devise_error_messages! %>
             <% if @trip_id %>
               <%= hidden_field_tag :invite_token, params[:invite_token] %>
@@ -29,7 +27,7 @@
               <%= f.label :password_confirmation %>
               <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Enter password confirmation" %>
             </div>
-            <br>
+            <br/>
             <div class="form-group custom-form">
               <%= f.submit "Sign up", class: 'btn btn-success' %>
             </div>
@@ -39,5 +37,4 @@
           <% end %>
     </div>
   </div>
-  </div>
-  </div>
+</div>

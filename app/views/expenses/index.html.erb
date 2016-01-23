@@ -1,54 +1,64 @@
-<div class="container">
-  <div class="row">
-
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="panel panel-default panel-info">
-        <div class= "panel-heading">
-          <h1 class="text-center heading"> Trip Expense </h1>
-          <table class="table" id= "white-color">
-            <thead>
-              <tr>
-                <td> <strong> Trip: </strong> <%= @trip.name %> </td>
-                <td> <strong> Number of trippers: </strong>  <%=  @trip.user_count %> </td>
-                <td> <strong> Total Expense: </strong> <%= @trip.total_expenses %> </td>
-                <td> <strong>Per head:</strong><%= @trip.expense_per_person  %> </td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class="panel panel-body">
-          <table class="table table-bordered table-striped ">
-            <thead>
-              <tr>
-                <td> <strong>  User </strong> </td>
-                <td> <strong> Category </strong> </td>
-                <td> <strong> Amount Spent </strong> </td>
-                <td> <strong> Amount Owe  </strong> </td>
-                <td> <strong> Amount get </strong>  </td>
-                <td> <strong> Edit </strong> </td>
-              </tr>
-            </thead>
-            <tbody>
-              <% @trip.expenses.each do |expense| %>
-                <tr>
-                  <td> <%= expense.user.name.capitalize %> </td>
-                  <td> <%= expense.category.capitalize %> </td>
-                  <td> <%= expense.amount_spent %> </td>
-                  <td> <%= expense.amount_owe %> </td>
-                  <td> <%= expense.amount_get %></td>
-                  <td> <%= link_to  edit_trip_expense_path(expense.trip, expense), class: 'btn  btn-xs' do %>
-                    <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
-                  <% end %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+<div class="row row-flex row-flex-wrap">
+  <div class="col-md-3">
+    <div class="panel panel-default panel-info custom-panel">
+      <div class= "panel-heading">
+        <h3 class= "text-center"> Expense Form </h3>
       </div>
-      <div class="col-md-4">
-        <table class="table table-borderless table-striped">
+      <div class="panel-body">
+        <%= render 'expenses/form' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default panel-info custom-panel">
+      <div class= "panel-heading">
+        <h2 class="text-center"> Trip Expense </h2>
+        <table class="table" id= "white-color">
+          <thead>
+            <tr>
+              <td> <strong> Trip: </strong> <%= @trip.name %> </td>
+              <td> <strong> Number of trippers: </strong>  <%=  @trip.user_count %> </td>
+              <td> <strong> Total Expense: </strong> <%= @trip.total_expenses %> </td>
+              <td> <strong>Per head:</strong><%= @trip.expense_per_person  %> </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="panel panel-body">
+        <table class="table table-bordered table-striped ">
+          <thead>
+            <tr>
+              <td> <strong>  User </strong> </td>
+              <td> <strong> Category </strong> </td>
+              <td> <strong> Amount Spent </strong> </td>
+              <td> <strong> Amount Owe  </strong> </td>
+              <td> <strong> Amount get </strong>  </td>
+              <td> <strong> Edit </strong> </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @trip.expenses.each do |expense| %>
+              <tr>
+                <td> <%= expense.user.name.capitalize %> </td>
+                <td> <%= expense.category.capitalize %> </td>
+                <td> <%= expense.amount_spent %> </td>
+                <td> <%= expense.amount_owe %> </td>
+                <td> <%= expense.amount_get %></td>
+                <td> <%= link_to  edit_trip_expense_path(expense.trip, expense), class: 'btn  btn-xs' do %>
+                  <i class="glyphicon glyphicon-pencil"> </i>&nbsp;
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="ppanel panel-default panel-info custom-panel">
+      <div class="panel-heading"> <h3 class="text-center "> Individual Transction </h3> </div>
+       <div class="panel-body">
+         <table class="table table-borderless table-striped">
           <thead>
             <tr>
               <td> <strong>  Giver </strong> </td>
@@ -66,16 +76,6 @@
             <% end %>
           </tbody>
         </table>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default panel-info">
-        <div class= "panel-heading">
-          <h3 class="heading text-center"> Expense Form </h3>
-        </div>
-        <div class="panel-body">
-          <%= render 'expenses/form' %>
-        </div>
       </div>
     </div>
   </div>

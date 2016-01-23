@@ -7,19 +7,20 @@ h1{
   font-size: 40px;
   font-family: 'Gorditas', cursive;
   font-weight: bold;
+  padding-bottom: 0;
 }
 .main-heading{
   font-family: 'Gorditas', cursive;
-  color: #00FFFF;
+  color: #FAEBD7;
   font-size: 6rem;
 }
 .lead{
-  color: #7FFFD4;
   font-size: 4rem;
+  color: #FAEBD7;
 }
 p{
   font-family: 'Gorditas', cursive;
-  color: #F0FFFF;
+  color: #FAEBD7;
   font-size: 2.5rem;
 }
 .about-paragraph{
@@ -30,8 +31,4 @@ p{
   width: 340px;
   text-align: center;
   margin:0 auto;
-  .custom-form{
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
 }

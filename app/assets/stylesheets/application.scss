@@ -18,7 +18,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import url(https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Lora:400,700,400italic);
+
 
 // Typography
 $font-family-main: 'Lora', serif;
@@ -28,25 +30,30 @@ $font-family-headings: 'Gorditas', serif;
 // Header colors
 $header-link-color: #FAEBD7;
 $dark-gray-font: #2e3439;
+// $page-background: #0074cf;
+$page-background: rgba(0, 117, 208,1);
+$panel-background: #fff;
+$panel-heading-background: #f8eabf ;
 
-html{
-  background-position: center, center;
-  background: url(/assets/beach-background.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
 body{
   font-family: $font-family-main, sans-serif;
   line-height: normal;
   color: $dark-gray-font;
-  background: transparent;
+  background: $page-background;
+  margin: 0;
+  overflow: hidden;
+  height:100%;
 
-  .heading{
-    color: $header-link-color;
-  }
+  #wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -200px;
+  /* Pad bottom by footer height */
+  padding: 0 0 200px;
+}
 
   a{
     color: $dark-gray-font;
@@ -54,54 +61,98 @@ body{
     font-family: $font-family-headings;
   }
 
-}
-
-
-.content {
-  padding-top: 100px;
-  margin-top: 20px;
-}
-.navbar-custom{
-  height: 100px;
-  padding:10px;
-  background: transparent;
-  border: transparent;
-  .navbar-brand
-  {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      text-align: center;
-      margin: auto;
+  .heading{
+    color: $header-link-color;
+    a{
       color: $header-link-color;
-  }
-  .navbar-nav li a {
-  //  line-height: 50px;
-   color: $header-link-color;
-   font-size: 2rem;
-   font-family: $font-family-headings;
+    }
   }
 
-  .navbar-right  li a{
-    margin: 15px;
-    padding-right: 10px;
+  .navbar-custom{
+
+
+    margin-bottom: 0px;
+    padding: 20px, 25px;
+    background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
+    border: transparent;
+    height: 100px;
+    .navbar-header{
+      padding-top: 20px;
+      .logo_img{
+       width: 50%;
+       height: 50%
+       }
+    }
+
+    .navbar-nav{
+      padding-top: 20px;
+      li a{
+        color: $header-link-color;
+        font-size: 2rem;
+        font-family: $font-family-headings;
+        margin-top: 10px;
+      }
+    }
+
+    .navbar-right  li {
+      margin-right: 5px;
+      padding-right: 10px;
+        .blue{
+          color: #0068c1;
+        }
+
+        .orange{
+          color: #ff6600;
+        }
+    }
   }
+
+
+  .custom-panel{
+    border-radius: 5px;
+    background-color: white;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y:scroll;
+    border: transparent !important;
+    .panel-heading {
+      background-color: $panel-heading-background!important;
+      color: $dark-gray-font;
+    }
+
+    .panel-body{
+      color: $dark-gray-font !important;
+      background-color: $panel-background !important;
+    }
+  }
+
+  .custom-footer{
+    background-image: url(footer.jpg);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: cover;
+    height: 200px;
+    border: transparent !important;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: -1;
+    .footer-content{
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+      padding-bottom: 5px;
+    }
+  }
+
+
 }
 
 .progress {
   background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
-}
-
-.panel{
-  radius: 0px;
-  border: transparent !important;
-}
-.panel-heading{
-  background-color: #0054B4!important
-}
-.panel-body{
-  color: $dark-gray-font !important;
-  background-color: #fff !important;
 }
 
 .table th, .table td {
@@ -109,40 +160,78 @@ body{
      border-style: none;
      color: $dark-gray-font;
  }
+
  .table-nonfluid {
    width: auto !important;
    margin: auto;
 }
 
-.footer-custom{
-  background: transparent;
-  height: 60px;
-  vertical-align: middle;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-//  Panel height adjustment
-.flexbox {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-}
-.flexbox .col {
-  flex: 1;
-  border: transparent;
+//  To make equal size columns
+.row-flex, .row-flex > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
 }
 
-.flexbox .col:nth-child(1) {
-  background: #fff;
-  order: 0;
+.row-flex-wrap {
+	-webkit-flex-flow: row wrap;
+  align-content: flex-start;
+  flex:0;
 }
-.flexbox .col:nth-child(2) {
-  background: #fff;
-  order: 1;
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+	 margin:-.2px; /* hack adjust for wrapping */
 }
-.flexbox .col:nth-child(3) {
-  background: #fff;
-  order: 2;
+
+.container-flex > div[class*='col-'] div,.row-flex > div[class*='col-'] div {
+	width:100%;
+}
+
+
+.flex-col {
+  display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  flex: 1 100%;
+	flex-flow: column nowrap;
+}
+
+.flex-grow {
+	display: flex;
+  -webkit-flex: 2;
+  flex: 2;
+}
+// --------------------------
+.scrollable-tab{
+min-height: 200px;
+max-height: 500px;
+overflow-y:scroll;
+}
+
+
+
+@media(max-width:767px){
+
+   body .navbar-custom .navbar-nav{
+     background: white;
+    li a {
+      color: black;
+      font-size: 2rem;
+      font-family: "Gorditas", serif;
+      z-index: 9999;
+
+     }
+      .btn-custom{
+        margin: 10px;
+        padding: 5px;
+        width:50px;
+
+      }
+
+  }
 }

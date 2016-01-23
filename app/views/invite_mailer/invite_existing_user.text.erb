@@ -1,9 +1,8 @@
 Hello,
   You are invited to participate in this trip <%= @trip.name %>.
-Tripit will help you to discuss about this trip, build an itinerary, and share group expenses.
-<%= button_to "Yes", accept_invite_url(@invite), method: :get %>
+Triplanner will help you to discuss about this trip, build an itinerary, and share group expenses.
+<%= link_to "Yes", accept_invite_url(@invite), method: :get %>
 <%= link_to "No!", decline_invite_url(@invite) %>
-
 Happy Planning and Tripping!!!
 
 Thanks,
