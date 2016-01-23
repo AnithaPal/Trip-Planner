@@ -30,7 +30,8 @@ $font-family-headings: 'Gorditas', serif;
 // Header colors
 $header-link-color: #FAEBD7;
 $dark-gray-font: #2e3439;
-$page-background: #0074cf;
+// $page-background: #0074cf;
+$page-background: rgba(0, 117, 208,1);
 $panel-background: #fff;
 $panel-heading-background: #f8eabf ;
 
@@ -49,9 +50,9 @@ body{
   height: auto !important;
   height: 100%;
   /* Negative indent footer by its height */
-  margin: 0 auto -190px;
+  margin: 0 auto -200px;
   /* Pad bottom by footer height */
-  padding: 0 0 190px;
+  padding: 0 0 200px;
 }
 
   a{
@@ -68,6 +69,8 @@ body{
   }
 
   .navbar-custom{
+
+
     margin-bottom: 0px;
     padding: 20px, 25px;
     background: url(/assets/beach-background-header.jpg) no-repeat center center fixed;
@@ -76,8 +79,8 @@ body{
     .navbar-header{
       padding-top: 20px;
       .logo_img{
-       width: 70%;
-       height: 70%
+       width: 50%;
+       height: 50%
        }
     }
 
@@ -87,6 +90,7 @@ body{
         color: $header-link-color;
         font-size: 2rem;
         font-family: $font-family-headings;
+        margin-top: 10px;
       }
     }
 
@@ -207,4 +211,27 @@ body{
 min-height: 200px;
 max-height: 500px;
 overflow-y:scroll;
+}
+
+
+
+@media(max-width:767px){
+
+   body .navbar-custom .navbar-nav{
+     background: white;
+    li a {
+      color: black;
+      font-size: 2rem;
+      font-family: "Gorditas", serif;
+      z-index: 9999;
+
+     }
+      .btn-custom{
+        margin: 10px;
+        padding: 5px;
+        width:50px;
+
+      }
+
+  }
 }
